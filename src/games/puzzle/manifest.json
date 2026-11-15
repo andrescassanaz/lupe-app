@@ -1,7 +1,7 @@
 {
   "id": "puzzle",
   "name": "Rompecabezas",
-  "subtitle": "De a poquito, un gran dibujo",
+  "subtitle": "Armá el dibujo",
   "order": 8,
   "cover": "assets/images/beach.png",
   "theme": {

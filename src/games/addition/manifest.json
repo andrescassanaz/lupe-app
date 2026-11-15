@@ -1,7 +1,7 @@
 {
   "id": "addition",
   "name": "A sumar",
-  "subtitle": "Contamos y juntamos",
+  "subtitle": "Contá y elegí el total",
   "order": 9,
   "cover": "assets/images/apple.png",
   "theme": {

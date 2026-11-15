@@ -1,7 +1,9 @@
 // Each game gets the common audio controls and its own named sound files.
 export function gameContext(player, game) {
   const clips = new Map(game.sounds.map(name => [name, new URL(`../games/${game.id}/assets/audio/${name}.wav`, import.meta.url)]));
+  const resolve = id => clips.get(id) || id;
   const audio = {
+    intro: (following = []) => player.play([resolve(`${game.id}-intro`), ...(Array.isArray(following) ? following : [following]).map(resolve)]),
     play: name => player.play(Array.isArray(name) ? name.map(id => clips.get(id) || id) : clips.get(name) || name),
     stop: () => player.stop(),
     speak: text => player.speak(text),

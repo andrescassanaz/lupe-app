@@ -1,3 +1,4 @@
+import { gameHeading } from '../../shared/ui.js';
 import { icon } from '../../shared/art.js';
 
 const DRAFT_KEY = 'lupe-writing-v1';
@@ -5,7 +6,7 @@ const MAX_LENGTH = 1000;
 
 export function mount(root, { audio }) {
   root.innerHTML = `<section class="game writing-game" aria-labelledby="writing-title">
-    <div class="game-heading"><span class="eyebrow">PALABRAS QUE SUENAN</span><h1 id="writing-title">A escribir</h1><p class="writing-intro">Tu nombre, tus amigos… ¡lo que vos quieras!</p></div>
+    <div class="game-heading">${gameHeading('A escribir', 'writing-title')}</div>
     <div class="writing-paper">
       <label for="writing-text">Escribí acá</label>
       <textarea id="writing-text" class="writing-text" placeholder="Lupe" maxlength="${MAX_LENGTH}" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" aria-describedby="writing-limit"></textarea>
@@ -41,7 +42,7 @@ export function mount(root, { audio }) {
     else if (audio.muted) status.textContent = 'Activá el sonido arriba para escuchar tus palabras.';
     else if (audio.speechState === 'error') status.textContent = 'No pudimos leerlo. Probá otra vez o pedile ayuda a una persona grande.';
     else if (!audio.spanishVoice()) status.textContent = 'Para escuchar, necesitás una voz en español en este dispositivo. Pedile ayuda a una persona grande.';
-    else status.textContent = speaking ? 'Escuchá tus palabras…' : 'Tocá el botón ▶ para escuchar.';
+    else status.textContent = speaking ? 'Leyendo…' : '';
   }
   function onInput() {
     clearedText = '';
@@ -74,6 +75,7 @@ export function mount(root, { audio }) {
   audio.addEventListener('change', render);
   globalThis.speechSynthesis?.addEventListener('voiceschanged', render);
   render();
+  audio.intro();
   return () => {
     input.removeEventListener('input', onInput);
     root.removeEventListener('click', onClick);

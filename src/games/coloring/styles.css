@@ -8,7 +8,7 @@
 :where(body[data-screen="coloring"]) .paper-caption { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; color: #827a6c; font-size: 11px; }
 :where(body[data-screen="coloring"]) .paper-caption > :first-child { color: #606756; font-weight: 750; }
 :where(body[data-screen="coloring"]) .coloring-canvas { display: block; width: 100%; height: auto; background: white; isolation: isolate; }
-:where(body[data-screen="coloring"]) .coloring-region { cursor: pointer; touch-action: manipulation; stroke: none; }
+:where(body[data-screen="coloring"]) .coloring-region { cursor: pointer; touch-action: manipulation; stroke: none; outline: none; }
 :where(body[data-screen="coloring"]) .coloring-region:focus-visible { outline: 3px solid #3977a7; outline-offset: -3px; }
 :where(body[data-screen="coloring"]) .coloring-ink { mix-blend-mode: multiply; pointer-events: none; }
 :where(body[data-screen="coloring"]) .coloring-message { text-align: center; color: #727963; font-size: 12px; padding: 12px; margin: 0; }
@@ -76,4 +76,46 @@
 :where(body[data-screen="coloring"]) .paint-color-cacao { --swatch: #775d52; }
 :where(body[data-screen="coloring"]) .paint-color-gris { --swatch: #b5b6b5; }
 :where(body[data-screen="coloring"]) .paint-color-pizarra { --swatch: #6d7885; }
-:where(body[data-screen="coloring"]) .paint-color-blanco { --swatch: #fffaf0; }
+:where(body[data-screen="coloring"]) .paint-color-blanco { --swatch: #fffaf0; }:where(body[data-screen="coloring"]) .coloring-paper[aria-busy="true"] .drawing-state { aspect-ratio: 3 / 2; display: grid; align-content: center; padding: 20px; }
+
+@media (min-width: 720px) and (min-height: 600px) {
+  :where(body[data-screen="coloring"]) .coloring-heading { flex-shrink: 0; }
+  :where(body[data-screen="coloring"]) .drawing-picker { margin: 0 0 8px; padding-bottom: 6px; }
+  :where(body[data-screen="coloring"]) .drawing-picker button { flex-basis: 140px; padding: 4px; font-size: 10px; }
+  :where(body[data-screen="coloring"]) .drawing-picker img { height: 48px; }
+  :where(body[data-screen="coloring"]) .coloring-layout { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(324px, 26vw, 380px); gap: 12px; align-items: stretch; }
+  :where(body[data-screen="coloring"]) .coloring-paper { display: flex; flex-direction: column; align-items: center; min-height: 0; container-type: size; }
+  :where(body[data-screen="coloring"]) .paper-caption { flex-shrink: 0; width: 100%; padding: 8px 12px; }
+  /* The packaged scenes are 3:2. Bound both axes while keeping the SVG's own ratio. */
+  :where(body[data-screen="coloring"]) .coloring-canvas { flex: 0 0 auto; width: min(100cqw, calc((100cqh - 34px - var(--drawing-message-height, 0px)) * 1.5)); height: auto; margin: auto; }
+  :where(body[data-screen="coloring"]) .coloring-paper:has(.coloring-message) .coloring-canvas { --drawing-message-height: 40px; }
+  :where(body[data-screen="coloring"]) .coloring-message { flex-shrink: 0; }
+  :where(body[data-screen="coloring"]) .coloring-tools { min-height: 0; padding: 10px; overflow-y: auto; display: grid; grid-template-columns: .8fr 1.2fr; align-content: start; gap: 4px; }
+  :where(body[data-screen="coloring"]) .coloring-tools .eyebrow { grid-column: 1 / -1; margin: 0; }
+  :where(body[data-screen="coloring"]) .material-picker { grid-column: 1 / -1; margin: 0; }
+  :where(body[data-screen="coloring"]) .material-picker button { min-height: 56px; }
+  :where(body[data-screen="coloring"]) .material-picker img { height: 30px; }
+  :where(body[data-screen="coloring"]) .color-picker { grid-column: 1 / -1; grid-template-columns: repeat(6, minmax(44px, 1fr)); gap: 4px; padding: 4px 0; }
+  :where(body[data-screen="coloring"]) .material-preview { margin: 0; gap: 6px; }
+  :where(body[data-screen="coloring"]) .material-preview > svg { width: 28px; height: 28px; flex-shrink: 0; }
+  :where(body[data-screen="coloring"]) .material-preview small { font-size: 10px; }
+  :where(body[data-screen="coloring"]) .coloring-download { margin: 0; }
+  :where(body[data-screen="coloring"]) .coloring-actions { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
+  :where(body[data-screen="coloring"]) .coloring-actions button { padding: 8px; font-size: 11px; }
+  :where(body[data-screen="coloring"]) .reset-confirm,
+  :where(body[data-screen="coloring"]) .coloring-tools > .game-message { grid-column: 1 / -1; }
+  :where(body[data-screen="coloring"]) .coloring-celebration:empty { display: none; }
+}
+@media (min-width: 720px) and (min-height: 600px) and (orientation: portrait) {
+  :where(body[data-screen="coloring"]) .coloring-layout { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+  :where(body[data-screen="coloring"]) .coloring-tools { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 8px 18px; }
+  :where(body[data-screen="coloring"]) .coloring-tools > .eyebrow:first-child { grid-area: 1 / 1; }
+  :where(body[data-screen="coloring"]) .material-picker { grid-area: 2 / 1; margin: 0; }
+  :where(body[data-screen="coloring"]) .coloring-tools > .eyebrow:nth-of-type(2) { grid-area: 1 / 2; }
+  :where(body[data-screen="coloring"]) .color-picker { grid-area: 2 / 2 / 5 / 3; grid-template-columns: repeat(6, minmax(44px, 1fr)); align-content: space-between; }
+  :where(body[data-screen="coloring"]) .material-preview { grid-area: 3 / 1; margin: 0; }
+  :where(body[data-screen="coloring"]) .coloring-download { grid-area: 4 / 1; margin: 0; }
+  :where(body[data-screen="coloring"]) .coloring-actions { grid-area: 5 / 1 / 6 / 3; }
+  :where(body[data-screen="coloring"]) .reset-confirm,
+  :where(body[data-screen="coloring"]) .coloring-tools > .game-message { grid-column: 1 / -1; }
+}

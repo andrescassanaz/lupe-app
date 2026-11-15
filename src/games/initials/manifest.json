@@ -1,0 +1,9 @@
+{
+  "id": "initials",
+  "name": "¿Con qué letra empieza?",
+  "subtitle": "Escuchá un nombre y buscá su inicial",
+  "order": 12,
+  "cover": "assets/cover.svg",
+  "theme": { "background": "#f5e6cb", "button": "#f5e6cb", "ink": "#926b32", "spark": "#9c78a4" },
+  "adultNote": "¿Con qué letra empieza?: escuchá uno de los 17 nombres de la sala y elegí su inicial entre tres letras. Al acertar se revela el nombre con la inicial destacada. Rondas de cinco, sin vidas ni límite de tiempo. Incluye voz en español para jugar sin internet."
+}

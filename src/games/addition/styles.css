@@ -47,3 +47,24 @@
   :where(body[data-screen="addition"]) .addition-quantity strong { font-size: 36px; }
   :where(body[data-screen="addition"]) .addition-quantity span { font-size: 11px; }
 }
+
+@media (min-width: 720px) and (min-height: 600px) {
+  :where(body[data-screen="addition"]) .addition-paper { flex: 1; min-height: 0; margin: 0; padding: 16px; display: flex; flex-direction: column; gap: 10px; container-type: size; }
+  :where(body[data-screen="addition"]) .addition-equation { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr) auto; gap: 10px; }
+  :where(body[data-screen="addition"]) .addition-group { min-height: 0; gap: 8px; padding: 12px; }
+  :where(body[data-screen="addition"]) .addition-objects { min-height: 0; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 4px; }
+  :where(body[data-screen="addition"]) .addition-object { min-height: 44px; aspect-ratio: auto; height: 100%; max-height: 100%; }
+  :where(body[data-screen="addition"]) .addition-quantity strong { font-size: clamp(36px, 7cqh, 64px); }
+  :where(body[data-screen="addition"]) .addition-result { grid-column: auto; gap: 10px; }
+  :where(body[data-screen="addition"]) .addition-total { width: 72px; min-height: 80px; }
+  :where(body[data-screen="addition"]) .addition-help { margin: 0; }
+  :where(body[data-screen="addition"]) .addition-choices { gap: clamp(16px, 3vw, 40px); }
+  :where(body[data-screen="addition"]) .addition-choice { width: clamp(88px, 14cqh, 130px); min-height: clamp(72px, 13cqh, 110px); font-size: clamp(40px, 8cqh, 64px); }
+  :where(body[data-screen="addition"]) .addition-message { margin: 0; min-height: 24px; }
+  :where(body[data-screen="addition"]) .addition-actions { flex-shrink: 0; }
+}
+@media (min-width: 720px) and (min-height: 600px) and (orientation: portrait) {
+  :where(body[data-screen="addition"]) .addition-equation { grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr); }
+  :where(body[data-screen="addition"]) .addition-result { grid-column: 1 / -1; }
+  :where(body[data-screen="addition"]) .addition-objects { grid-template-columns: repeat(5, minmax(44px, 1fr)); }
+}

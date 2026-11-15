@@ -1,7 +1,7 @@
 {
   "id": "coloring",
   "name": "A colorear",
-  "subtitle": "Un mundo de colores y brillos",
+  "subtitle": "Elegí un dibujo para pintar",
   "order": 3,
   "cover": "assets/images/ai-v1/coloring.png",
   "theme": {

@@ -1,0 +1,9 @@
+{
+  "id": "basketball",
+  "name": "Básquet",
+  "subtitle": "Deslizá, lanzá… ¡y al aro!",
+  "order": 10,
+  "cover": "assets/images/cover-ai.png",
+  "theme": { "background": "#f1dfca", "button": "#e3ebda", "ink": "#79634f", "spark": "#c08862" },
+  "adultNote": "Básquet: partidos de un minuto, dos puntos por canasta. El largo, la velocidad y la dirección del gesto cambian el lanzamiento. El aro empieza a moverse a partir de cuatro puntos y acelera gradualmente. Al salir de la app o abrir la ayuda se pausa la partida. Funciona sin internet."
+}

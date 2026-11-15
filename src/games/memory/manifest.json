@@ -1,7 +1,7 @@
 {
   "id": "memory",
   "name": "Memotest de animales",
-  "subtitle": "Doce pares para descubrir",
+  "subtitle": "Encontrá los animales iguales",
   "order": 2,
   "cover": "assets/images/ai-v1/memory.png",
   "theme": {

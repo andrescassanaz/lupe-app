@@ -1,7 +1,7 @@
 import { art } from './art.js';
 import { ANIMALS, createMemory, flipCard, resolvePair } from './rules.js';
 import { icon, confetti } from '../../shared/art.js';
-import { replaceView } from '../../shared/ui.js';
+import { replaceView, gameHeading } from '../../shared/ui.js';
 
 const names = { dog: 'Perro', cat: 'Gato', cow: 'Vaca', bunny: 'Conejo', bear: 'Oso', fox: 'Zorro', pig: 'Chancho', frog: 'Rana', lion: 'León', panda: 'Panda', owl: 'Búho', penguin: 'Pingüino' };
 
@@ -13,7 +13,7 @@ export function mount(root, { audio }) {
   function render() {
     const won = state.matched.length === state.cards.length;
     replaceView(root, `<section class="game memory-game" aria-labelledby="game-title">
-      <div class="game-heading"><span class="eyebrow">DE A DOS ES MÁS DIVERTIDO</span><h1 id="game-title">Memotest de animales</h1><p class="level-note">12 pares de animales · 24 cartas para descubrir</p></div>
+      <div class="game-heading">${gameHeading('Memotest de animales', 'game-title')}</div>
       <div class="memory-progress" aria-label="${state.matched.length / 2} de ${ANIMALS.length} pares encontrados">${ANIMALS.map((animal, i) => `<span class="pair-dot ${state.matched.length / 2 > i ? 'found' : ''}">${icon('paw')}</span>`).join('')}</div>
       <div class="memory-board" aria-label="Cartas del memotest">${state.cards.map((card, index) => {
         const matched = state.matched.includes(card.id);
@@ -25,7 +25,7 @@ export function mount(root, { audio }) {
       }).join('')}</div>
       <div class="memory-bottom">${won
         ? `<p class="win-message" role="status">¡Encontraste a todos!</p><button class="play-again" data-action="replay">${icon('refresh')} ¡Otra vez!</button>`
-        : `<p class="game-message" role="status">Tocá dos cartas y encontrá los compañeros</p><button class="small-listen" data-action="listen" aria-label="Escuchar cómo jugar">${icon('sound')}</button>`}
+        : `<p class="game-message" role="status">Tocá dos cartas y encontrá los compañeros</p>`}
       </div>${won ? confetti() : ''}
     </section>`);
   }
@@ -51,7 +51,8 @@ export function mount(root, { audio }) {
       if (state.matched.length === state.cards.length) audio.play('celebrate');
     }, match ? 550 : 850);
   }
-  render(); audio.play('memory-intro');
+  render();
   root.addEventListener('click', handleClick);
+  audio.intro();
   return () => { disposed = true; clearTimeout(timer); root.removeEventListener('click', handleClick); };
 }

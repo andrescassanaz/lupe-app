@@ -25,3 +25,12 @@
 .game-tile[data-game="addition"] .tile-art { background: #f3dfd2; }
 .game-tile[data-game="addition"] .tile-go { background: #e5ead9; color: #94624d; }
 .game-tile[data-game="addition"] .tile-spark { color: #be8569; }
+.game-tile[data-game="basketball"] .tile-art { background: #f1dfca; }
+.game-tile[data-game="basketball"] .tile-go { background: #e3ebda; color: #79634f; }
+.game-tile[data-game="basketball"] .tile-spark { color: #c08862; }
+.game-tile[data-game="classmates"] .tile-art { background: #e3eddf; }
+.game-tile[data-game="classmates"] .tile-go { background: #e3eddf; color: #397762; }
+.game-tile[data-game="classmates"] .tile-spark { color: #ba8243; }
+.game-tile[data-game="initials"] .tile-art { background: #f5e6cb; }
+.game-tile[data-game="initials"] .tile-go { background: #f5e6cb; color: #926b32; }
+.game-tile[data-game="initials"] .tile-spark { color: #9c78a4; }

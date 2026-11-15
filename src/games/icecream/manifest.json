@@ -1,7 +1,7 @@
 {
   "id": "icecream",
   "name": "La heladería",
-  "subtitle": "¡Nueve sabores para elegir!",
+  "subtitle": "Prepará el pedido",
   "order": 1,
   "cover": "assets/images/ai-v1/icecream.png",
   "theme": {

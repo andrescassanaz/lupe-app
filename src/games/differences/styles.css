@@ -19,3 +19,15 @@
  :where(body[data-screen="differences"]) .differences-frame { padding: 8px; }
  :where(body[data-screen="differences"]) .differences-progress { margin: 14px auto; gap: 7px; }
 }
+
+@media (min-width: 720px) and (min-height: 600px) {
+ :where(body[data-screen="differences"]) .differences-progress { flex-shrink: 0; margin: 2px auto 8px; }
+ :where(body[data-screen="differences"]) .differences-pair { flex: 1; min-height: 0; container-type: size; gap: 16px; }
+ :where(body[data-screen="differences"]) .differences-frame { align-self: center; justify-self: center; padding: 8px; }
+ /* Keep the hit areas on the square image, even when height is the limiting size. */
+ :where(body[data-screen="differences"]) .differences-picture { width: min(calc((100cqw - 16px) / 2 - 20px), calc(100cqh - 54px)); }
+ :where(body[data-screen="differences"]) .differences-frame > p { padding: 2px 0 8px; }
+ :where(body[data-screen="differences"]) .differences-message { flex-shrink: 0; margin: 8px auto; min-height: 24px; font-size: 14px; }
+ :where(body[data-screen="differences"]) .differences-actions { flex-shrink: 0; }
+ :where(body[data-screen="differences"]) .differences-actions button { min-height: 48px; }
+}

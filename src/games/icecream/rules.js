@@ -9,24 +9,38 @@ export const FLAVORS = Object.freeze([
   { id: 'cielo', name: 'Crema del cielo', color: '#8fc9e5' },
   { id: 'oreo', name: 'Oreo', color: '#eee9e2' },
 ]);
-export const MAX_SCOOPS = 4;
+export const CONTAINERS = Object.freeze([
+  { id: 'cone', name: 'Cucurucho', capacity: 2 },
+  { id: 'cup', name: 'Vasito', capacity: 2 },
+  { id: 'basket', name: 'Canastita', capacity: 3 },
+  { id: 'quarter', name: 'Cuarto de helado', capacity: 4 },
+  { id: 'super', name: 'Súper cucurucho', capacity: 6, special: true },
+]);
+export const MAX_SCOOPS = 6;
+export const containerById = id => CONTAINERS.find(item => item.id === id);
 
-export function createOrder(random = Math.random) {
-  const count = random() < 0.5 ? 3 : MAX_SCOOPS;
-  return Array.from({ length: count }, () => FLAVORS[Math.floor(random() * FLAVORS.length)].id);
+export function createOrder(random = Math.random, containerId) {
+  const roll = random();
+  const container = containerById(containerId) || CONTAINERS[roll >= .92 ? 4 : Math.floor(roll / .92 * 4)];
+  const available = FLAVORS.map(flavor => flavor.id);
+  const flavors = Array.from({ length: container.capacity }, () => available.splice(Math.floor(random() * available.length), 1)[0]);
+  return { container: container.id, flavors };
 }
 
-export function addScoop(scoops, flavor) {
-  return scoops.length < MAX_SCOOPS && FLAVORS.some(item => item.id === flavor) ? [...scoops, flavor] : scoops;
+export function addScoop(scoops, flavor, containerId = 'cone') {
+  const container = containerById(containerId);
+  return container && scoops.length < container.capacity && !scoops.includes(flavor) && FLAVORS.some(item => item.id === flavor) ? [...scoops, flavor] : scoops;
 }
 
-export function orderMatches(order, scoops) {
-  return order.length === scoops.length && [...order].sort().every((flavor, i) => flavor === [...scoops].sort()[i]);
+export function changeContainer(scoops, containerId) {
+  const container = containerById(containerId);
+  return container ? scoops.slice(0, container.capacity) : scoops;
+}
+
+export function orderMatches(order, scoops, containerId) {
+  return order.container === containerId && order.flavors.length === scoops.length && [...order.flavors].sort().every((flavor, i) => flavor === [...scoops].sort()[i]);
 }
 
 export function orderAudio(order) {
-  if (order.every(id => ['frutilla', 'chocolate', 'vainilla'].includes(id))) {
-    return `order-${[...order].sort().join('-')}`;
-  }
-  return ['order-intro', ...order.map(id => `scoop-${id}`)];
+  return [`container-${order.container}`, ...order.flavors.map(id => `scoop-${id}`)];
 }

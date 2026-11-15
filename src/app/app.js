@@ -17,13 +17,14 @@ app.innerHTML = `<div class="app-shell">
     <button class="sound-button icon-button" data-global="sound" aria-label="Silenciar sonidos" aria-pressed="false">${icon('sound')}</button>
   </header>
   <main id="main-content"></main>
+  <p class="audio-feedback" role="status" hidden></p>
   <footer class="app-footer">
     <button class="offline-status" data-global="adults" aria-label="Ver preparación para jugar sin internet"><span class="status-dot"></span><span id="offline-label" role="status">Preparando los juegos…</span></button>
     <button class="adult-button" data-global="adults">${icon('info')} Para grandes</button>
   </footer>
   <dialog class="adult-dialog" aria-labelledby="adult-title">
     <button class="dialog-close icon-button" data-global="close-dialog" aria-label="Cerrar">${icon('close')}</button>
-    <span class="eyebrow">ANTES DE LA AVENTURA</span><h2 id="adult-title">Jugar sin internet</h2>
+    <h2 id="adult-title">Jugar sin internet</h2>
     <p>Prepará esta app en cada navegador o instalación que Lupe vaya a usar.</p>
     <div id="download-details" aria-live="polite"></div>
     <ol><li>En el iPad, usá Compartir → Agregar a Inicio y abrí Lupe desde ese ícono.</li><li>Esperá a que aparezca «Lista para jugar sin internet».</li><li>Activá modo avión, cerrá la app y volvé a abrirla. Probá los juegos y el sonido.</li></ol>
@@ -35,18 +36,22 @@ app.innerHTML = `<div class="app-shell">
   </dialog>
 </div>`;
 
+audio.addEventListener('change', () => {
+  const feedback = app.querySelector('.audio-feedback');
+  feedback.hidden = audio.speechState !== 'audio-error';
+  feedback.textContent = feedback.hidden ? '' : 'No se pudo reproducir el sonido. Tocá el parlante para volver a intentar.';
+});
 const main = document.querySelector('#main-content');
 const dialog = document.querySelector('dialog');
 const gameById = new Map(games.map(game => [game.id, game]));
 
 function home() {
   main.innerHTML = `<section class="home-screen" aria-labelledby="welcome-title">
-    <div class="home-intro"><span class="eyebrow">UN RATITO PARA JUGAR</span><h1 id="welcome-title">¡Hola, Lupe! <span class="hello-spark" aria-hidden="true">✳</span></h1><p>¿A qué jugamos hoy?</p></div>
+    <div class="home-intro"><h1 id="welcome-title">¡Hola, Lupe! <span class="hello-spark" aria-hidden="true">✳</span></h1><p>¿A qué jugamos hoy?</p></div>
     <div class="game-grid">${[...games].sort((a, b) => a.order - b.order).map(game => `<button class="game-tile" data-game="${game.id}" aria-label="Jugar a ${escapeHtml(game.name)}">
       <div class="tile-art">${image(new URL(game.cover, import.meta.url))}<span class="tile-spark spark-one" aria-hidden="true">✦</span><span class="tile-spark spark-two" aria-hidden="true">✧</span></div>
       <div class="tile-caption"><div><h2>${escapeHtml(game.name)}</h2><p>${escapeHtml(game.subtitle)}</p></div><span class="tile-go">${icon('arrow')}</span></div>
     </button>`).join('')}</div>
-    <p class="home-note">Hecho para imaginar, descubrir y volver a jugar <span aria-hidden="true">♡</span></p>
   </section>`;
 }
 
@@ -88,6 +93,22 @@ function renderOffline() {
   if (errorNode) errorNode.textContent = error;
   document.querySelector('#storage-note').textContent = persistent === true ? 'El navegador concedió almacenamiento persistente.' : persistent === false ? 'El navegador no concedió almacenamiento persistente. Comprobá el modo avión antes de viajar.' : persistent === 'unsupported' ? 'Este navegador no ofrece protección adicional del almacenamiento.' : 'Podés solicitar al navegador que conserve la descarga.';
 }
+
+// Handle help before a game interprets the same tap as a move.
+app.addEventListener('click', event => {
+  if (!event.target.closest('[data-global="instructions"]')) return;
+  event.stopPropagation();
+  const game = gameById.get(screen);
+  if (!game) return;
+  if (audio.muted) {
+    audio.toggle();
+    const sound = app.querySelector('[data-global="sound"]');
+    sound.innerHTML = icon('sound');
+    sound.setAttribute('aria-label', 'Silenciar sonidos');
+    sound.setAttribute('aria-pressed', 'false');
+  }
+  gameContext(audio, game).audio.intro();
+}, true);
 
 app.addEventListener('click', event => {
   const gameTile = event.target.closest('[data-game]');

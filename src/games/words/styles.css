@@ -18,3 +18,15 @@
  :where(body[data-screen="words"]) .words-line { gap: 7px; }
  :where(body[data-screen="words"]) .words-choices button { min-width: 68px; min-height: 68px; }
 }
+
+@media (min-width: 720px) and (min-height: 600px) {
+ :where(body[data-screen="words"]) .words-paper { flex: 1; min-height: 0; margin: 0; padding: clamp(12px, 2vh, 28px); display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; gap: 8px; container-type: size; }
+ :where(body[data-screen="words"]) .words-symbol { font-size: clamp(48px, 12cqh, 100px); line-height: 1; }
+ :where(body[data-screen="words"]) .words-clue { margin: 0; }
+ :where(body[data-screen="words"]) .words-listen { flex-shrink: 0; }
+ :where(body[data-screen="words"]) .words-line { width: 100%; margin: 0; gap: clamp(12px, 2vw, 28px); }
+ :where(body[data-screen="words"]) .words-letter { width: min(18cqw, 25cqh); height: clamp(72px, 25cqh, 180px); font-size: clamp(48px, 16cqh, 112px); }
+ :where(body[data-screen="words"]) .words-choices { gap: clamp(18px, 4vw, 48px); }
+ :where(body[data-screen="words"]) .words-choices button { width: clamp(78px, 16cqh, 124px); height: clamp(78px, 16cqh, 124px); font-size: clamp(40px, 10cqh, 72px); }
+ :where(body[data-screen="words"]) .words-message { margin: 0; min-height: 24px; }
+}

@@ -1,6 +1,6 @@
 import { icon, confetti } from '../../shared/art.js';
 import { downloadPortrait } from './save-image.js';
-import { replaceView } from '../../shared/ui.js';
+import { replaceView, gameHeading } from '../../shared/ui.js';
 import { categories, skinColors, hairColors, defaultFace, normalizeFace, randomFace, asset, STORAGE_KEY } from './parts.js';
 
 export function mount(root, { audio }) {
@@ -28,25 +28,25 @@ export function mount(root, { audio }) {
   function render() {
     const current = categories.find(item => item.id === category);
     replaceView(root, `<section class="game faces-game" aria-labelledby="faces-title">
-      <div class="game-heading"><span class="eyebrow">UN POQUITO DE IMAGINACIÓN</span><h1 id="faces-title">Caras locas<span class="faces-heading-star" aria-hidden="true">✳</span></h1><p>¡Tocá, cambiá y hacé reír!</p></div>
+      <div class="game-heading">${gameHeading('Caras locas', 'faces-title')}</div>
       <div class="faces-workshop">
         <div class="faces-stage ${celebrate ? 'is-celebrating' : ''}">
           <span class="faces-stage-star faces-star-one" aria-hidden="true">✦</span><span class="faces-stage-star faces-star-two" aria-hidden="true">✧</span>
           ${portrait()}
-          <div class="faces-stage-caption">${celebrate ? '¡Qué carita tan genial!' : 'Así va tu personaje'}</div>
+          <div class="faces-stage-caption">${celebrate ? '¡Listo!' : ''}</div>
           ${celebrate ? confetti() : ''}
         </div>
         <div class="faces-editor">
           <div class="faces-categories" role="group" aria-label="Elegí qué cambiar">${categories.map(item => `<button data-category="${item.id}" data-focus="category-${item.id}" aria-pressed="${item.id === category}" aria-controls="faces-options"><img src="${asset(item.id, ['makeup', 'earrings', 'accessory', 'outfit'].includes(item.id) ? 1 : 0)}" alt="" draggable="false" /><span>${item.label}</span></button>`).join('')}</div>
           <div class="faces-options-panel" id="faces-options" role="group" aria-labelledby="faces-part-title">
-            <div class="faces-part-heading"><h2 id="faces-part-title">${current.label}</h2><span>Elegí la que más te guste</span></div>
+            <div class="faces-part-heading"><h2 id="faces-part-title">${current.label}</h2></div>
             <div class="faces-options">${current.names.map((name, i) => `<button class="faces-option ${face[category] === i ? 'is-selected' : ''}" data-option="${i}" data-focus="option-${i}" aria-label="${name}" aria-pressed="${face[category] === i}">${i === 0 && ['makeup', 'earrings', 'accessory'].includes(category) ? '<span class="faces-none" aria-hidden="true">∅</span>' : `<img src="${asset(category, i)}" alt="" draggable="false" />`}<span>${name}</span>${face[category] === i ? `<span class="faces-choice-check">${icon('check')}</span>` : ''}</button>`).join('')}</div>
-            ${category === 'face' ? swatches('skin', skinColors, face.skin, 'Color de piel') : category === 'hair' ? swatches('hair-color', hairColors, face.hairColor, 'Color de pelo') : '<p class="faces-tip">Cada toque inventa una carita nueva.</p>'}
+            ${category === 'face' ? swatches('skin', skinColors, face.skin, 'Color de piel') : category === 'hair' ? swatches('hair-color', hairColors, face.hairColor, 'Color de pelo') : ''}
           </div>
           <div class="faces-actions"><button class="secondary-button" data-action="random" data-focus="random"><span aria-hidden="true">✦</span> Sorprendeme</button><button class="secondary-button faces-undo" data-action="undo" data-focus="undo" aria-label="Deshacer último cambio" ${previous ? '' : 'disabled'}>${icon('undo')}<span>Deshacer</span></button><button class="primary-button" data-action="done" data-focus="done">${icon('check')} ¡Así me gusta!</button><button class="secondary-button" data-action="download" data-focus="download">${icon('download')} Guardar imagen</button></div>
         </div>
       </div>
-      <p class="faces-status" role="status" aria-live="polite">${saveFailed ? 'Podés seguir jugando. Este navegador no pudo guardar la carita.' : celebrate ? '¡Tu personaje está listo! Podés seguir inventando.' : 'Tu carita se guarda acá para seguir jugando.'}</p>
+      <p class="faces-status" role="status" aria-live="polite">${saveFailed ? 'Podés seguir jugando. Este navegador no pudo guardar la carita.' : celebrate ? '¡Tu personaje está listo!' : ''}</p>
     </section>`);
 
     root.querySelector('.faces-hair').style.filter = hairColors[face.hairColor].filter;
@@ -98,5 +98,6 @@ export function mount(root, { audio }) {
   }
   root.addEventListener('click', onClick);
   render();
+  audio.intro();
   return () => { disposed = true; clearTimeout(timer); root.removeEventListener('click', onClick); };
 }

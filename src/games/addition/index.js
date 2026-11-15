@@ -1,6 +1,6 @@
 import { createExercise } from './rules.js';
 import { confetti, icon } from '../../shared/art.js';
-import { replaceView } from '../../shared/ui.js';
+import { replaceView, gameHeading } from '../../shared/ui.js';
 
 export function mount(root, { audio }) {
   let exercise = createExercise();
@@ -25,7 +25,7 @@ export function mount(root, { audio }) {
 
   function render() {
     replaceView(root, `<section class="game addition-game">
-      <div class="game-heading"><span class="eyebrow">POQUITO A POQUITO</span><h1 tabindex="-1">A sumar</h1><p class="level-note">Juntamos ${exercise.item.plural}. ¿Cuántos dibujos hay en total?</p></div>
+      <div class="game-heading">${gameHeading('A sumar', 'game-title')}</div>
       <div class="addition-paper">
         <div class="addition-equation">
           ${group(exercise.left, 'left')}<span class="addition-sign" aria-label="más">+</span>${group(exercise.right, 'right')}
@@ -36,7 +36,7 @@ export function mount(root, { audio }) {
         <p class="addition-message" role="status" aria-live="polite">${message}</p>
         <div class="addition-actions">${solved ? `<button class="primary-button" data-action="next">Otra suma ${icon('arrow')}</button>` : '<button class="secondary-button" data-action="clear">Volver a contar</button>'}</div>
       </div>
-      <p class="game-message">Sin apuro. ¡Contamos a tu ritmo!</p>${solved ? confetti() : ''}
+      ${solved ? confetti() : ''}
     </section>`);
   }
 
@@ -82,5 +82,6 @@ export function mount(root, { audio }) {
 
   root.addEventListener('click', click);
   render();
+  audio.intro();
   return () => { root.removeEventListener('click', click); audio.stop(); };
 }

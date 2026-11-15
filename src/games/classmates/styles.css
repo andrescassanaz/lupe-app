@@ -1,0 +1,59 @@
+:where(body[data-screen="classmates"]) .classmates-game { text-align: center; max-width: 1000px; }
+:where(body[data-screen="classmates"]) .classmates-levels { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 16px; }
+:where(body[data-screen="classmates"]) .classmates-levels button { min-width: 90px; min-height: 48px; background: #fffcf6; color: #586c5d; }
+:where(body[data-screen="classmates"]) .classmates-levels [aria-pressed="true"] { background: #397762; color: white; border-color: #397762; }
+:where(body[data-screen="classmates"]) .classmates-paper { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 26px; border: 2px solid #e5ddc9; background: #fffdf8; border-radius: 30px; box-shadow: 0 6px 0 #eae3d7; }
+:where(body[data-screen="classmates"]) .classmates-progress { display: flex; align-items: center; justify-content: center; gap: 8px; color: #e1d9c7; font-size: 27px; }
+:where(body[data-screen="classmates"]) .classmates-progress .is-filled { color: #c79538; }
+:where(body[data-screen="classmates"]) .classmates-round { font-size: 14px; color: #687463; margin-left: 10px; }
+:where(body[data-screen="classmates"]) .classmates-question { font-size: clamp(20px, 3vw, 30px); font-weight: 750; }
+:where(body[data-screen="classmates"]) .classmates-listen, :where(body[data-screen="classmates"]) .classmates-next { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 52px; font-size: 16px; flex-shrink: 0; }
+:where(body[data-screen="classmates"]) .classmates-listen { background: #f1e8d4; border-color: #e1d2b5; color: #6d5736; }
+:where(body[data-screen="classmates"]) .classmates-choices { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 5px; }
+:where(body[data-screen="classmates"]) .classmates-choice { position: relative; display: flex; align-items: center; justify-content: center; padding: 14px 8px; min-width: 0; min-height: 88px; border: 2px solid #b9ccb0; border-radius: 20px; background: #f0f4e9; color: #365b45; font-size: clamp(18px, 2.6vw, 30px); font-weight: 800; letter-spacing: 1px; box-shadow: 0 4px 0 #d4dfc9; }
+:where(body[data-screen="classmates"]) .classmates-choice:active { transform: translateY(2px); box-shadow: none; }
+:where(body[data-screen="classmates"]) .classmates-choice.is-tried { border-style: dashed; background: #f8f5ec; color: #757363; box-shadow: none; }
+:where(body[data-screen="classmates"]) .classmates-choice.is-correct { background: #dcecd2; border-color: #397762; color: #275f43; box-shadow: 0 4px 0 #b8d3ac; }
+:where(body[data-screen="classmates"]) .classmates-check { font-size: 20px; margin-left: 8px; }
+:where(body[data-screen="classmates"]) .classmates-message { min-height: 24px; font-size: 16px; line-height: 1.5; color: #397762; }
+:where(body[data-screen="classmates"]) .classmates-next-slot { min-height: 52px; }
+:where(body[data-screen="classmates"]) .classmates-game:has(.all-names) .classmates-next-slot:empty { min-height: 0; }
+:where(body[data-screen="classmates"]) .classmates-word { min-height: 86px; display: flex; justify-content: center; align-items: center; gap: 4px; font-size: clamp(28px, 5vw, 52px); font-weight: 800; letter-spacing: 3px; color: #968575; }
+:where(body[data-screen="classmates"]) .classmates-word strong { display: inline-grid; place-items: center; background: #f4e2b5; color: #795622; border-radius: 14px; padding: 4px 12px; }
+:where(body[data-screen="classmates"]) .classmates-word.is-revealed { color: #42634b; }
+:where(body[data-screen="classmates"]) .letter-choices { max-width: 560px; }
+:where(body[data-screen="classmates"]) .letter-choices .classmates-choice { min-height: 110px; font-size: 58px; background: #f8edcf; color: #795622; border-color: #ddc895; box-shadow: 0 4px 0 #e6d6ae; }
+:where(body[data-screen="classmates"]) .letter-choices .is-correct { background: #dcecd2; border-color: #397762; color: #275f43; }
+:where(body[data-screen="classmates"]) .all-names { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+:where(body[data-screen="classmates"]) .all-names .classmates-choice { min-height: 62px; font-size: clamp(16px, 2.1vw, 25px); }
+:where(body[data-screen="classmates"]) .classmates-finish { color: #c79538; font-size: 100px; line-height: 1.2; }
+:where(body[data-screen="classmates"]) .classmates-finish-note { line-height: 1.5; color: #687463; }
+:where(body[data-screen="classmates"]) .is-complete { justify-content: center; min-height: 430px; }
+@media (min-width: 720px) and (min-height: 600px) {
+ :where(body[data-screen="classmates"]) .classmates-levels { flex-shrink: 0; margin-bottom: 10px; }
+ :where(body[data-screen="classmates"]) .classmates-paper { flex: 1; min-height: 0; gap: clamp(8px, 1.4vh, 18px); padding: clamp(14px, 2vh, 26px); }
+ :where(body[data-screen="classmates"]) .classmates-choices { flex: 1; min-height: 0; overflow-y: auto; align-content: center; }
+ :where(body[data-screen="classmates"]) .classmates-choice { min-height: 70px; max-height: 140px; }
+ :where(body[data-screen="classmates"]) .all-names { align-content: start; grid-template-rows: repeat(5, minmax(52px, 1fr)); }
+ :where(body[data-screen="classmates"]) .all-names .classmates-choice { min-height: 52px; padding: 8px; }
+ :where(body[data-screen="classmates"]) .classmates-progress, :where(body[data-screen="classmates"]) .classmates-question, :where(body[data-screen="classmates"]) .classmates-message, :where(body[data-screen="classmates"]) .classmates-word, :where(body[data-screen="classmates"]) .classmates-next-slot { flex-shrink: 0; }
+ :where(body[data-screen="classmates"]) .classmates-word { min-height: 66px; }
+ :where(body[data-screen="classmates"]) .letter-choices { flex: 1; max-height: 180px; margin: auto; }
+ :where(body[data-screen="classmates"]) .letter-choices .classmates-choice { min-height: 85px; }
+ :where(body[data-screen="classmates"]) .is-complete { min-height: 0; }
+}
+@media (max-width: 600px) {
+ :where(body[data-screen="classmates"]) .classmates-paper { padding: 20px 10px; gap: 16px; }
+ :where(body[data-screen="classmates"]) .classmates-choices { grid-template-columns: 1fr; gap: 12px; }
+ :where(body[data-screen="classmates"]) .classmates-choice { min-height: 68px; font-size: 25px; }
+ :where(body[data-screen="classmates"]) .all-names { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ :where(body[data-screen="classmates"]) .all-names .classmates-choice { min-height: 58px; font-size: clamp(16px, 4.1vw, 23px); letter-spacing: .5px; }
+ :where(body[data-screen="classmates"]) .letter-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ :where(body[data-screen="classmates"]) .letter-choices .classmates-choice { min-height: 100px; font-size: 48px; }
+ :where(body[data-screen="classmates"]) .classmates-round { font-size: 12px; margin-left: 4px; }
+ :where(body[data-screen="classmates"]) .classmates-progress { gap: 5px; }
+}
+
+@media (min-width: 900px) and (min-height: 600px) {
+ :where(body[data-screen="classmates"]) .all-names { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(52px, 1fr)); }
+}

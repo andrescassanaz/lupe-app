@@ -1,0 +1,9 @@
+{
+  "id": "classmates",
+  "name": "Los nombres del jardín",
+  "subtitle": "Escuchá y encontrá a tus amigos",
+  "order": 11,
+  "cover": "assets/cover.svg",
+  "theme": { "background": "#e3eddf", "button": "#e3eddf", "ink": "#397762", "spark": "#ba8243" },
+  "adultNote": "Los nombres del jardín: los 17 nombres de la sala, en mayúscula, con 3, 6 o todas las opciones. Rondas de cinco, sin vidas ni límite de tiempo. Los nombres se mezclan sin repetirse hasta recorrer la lista. Las voces en español están incluidas para jugar sin internet."
+}

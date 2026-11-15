@@ -243,3 +243,38 @@ h1, h2, p { margin: 0; }
   .tile-caption h2 { font-size: 14px; }
   .tile-caption { flex-wrap: wrap; }
 }
+
+.game-title-row { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.game-title-row h1 { min-width: 0; margin: 0; }
+.game-instructions { flex: 0 0 44px; width: 44px; height: 44px; background: #f0eadf; color: #665c4a; }
+.game-heading:has(.game-title-row) { margin-bottom: 18px; }
+.game-heading .level-note { margin-top: 8px; }
+.faces-stage-caption:empty, .faces-status:empty, .writing-status:empty { display: none; }
+.audio-feedback { text-align: center; padding: 10px 20px; color: #815444; }
+
+/* Tablet games share the available viewport; each module sizes its own play area.
+   Home and the ice cream shop keep their existing layouts. */
+@media (min-width: 720px) and (min-height: 600px) {
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .app-shell {
+    max-width: none;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .app-header { height: 52px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .app-header .icon-button { width: 46px; height: 46px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .brand { font-size: 32px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .brand-sun { width: 35px; height: 35px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) main { min-height: 0; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .game {
+    display: flex; flex-direction: column; flex: 1; min-height: 0;
+    max-width: none; margin: 0; padding: 8px 0 0;
+  }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .game-heading { flex-shrink: 0; margin-bottom: 8px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .game-heading h1 { font-size: clamp(26px, 3vw, 38px); }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .game-heading .level-note { margin-top: 2px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .app-footer { flex-shrink: 0; min-height: 36px; margin-top: 8px; }
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .offline-status,
+  body[data-screen]:not([data-screen="home"], [data-screen="icecream"]) .adult-button { min-height: 36px; padding-top: 8px; padding-bottom: 8px; }
+}

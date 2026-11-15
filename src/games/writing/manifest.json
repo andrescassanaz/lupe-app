@@ -1,7 +1,7 @@
 {
   "id": "writing",
   "name": "A escribir",
-  "subtitle": "Tus palabras tienen voz",
+  "subtitle": "Escribí y escuchá tus palabras",
   "order": 4,
   "cover": "assets/images/ai-v1/writing.png",
   "theme": {

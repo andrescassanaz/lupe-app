@@ -1,0 +1,59 @@
+body[data-screen="basketball"] .app-shell { height: 100svh; height: 100dvh; min-height: 0; padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+body[data-screen="basketball"] .app-header { height: 52px; }
+body[data-screen="basketball"] .app-header .icon-button { width: 44px; height: 44px; }
+body[data-screen="basketball"] main { min-height: 0; }
+body[data-screen="basketball"] .app-footer { flex-shrink: 0; margin-top: 4px; min-height: 36px; }
+body[data-screen="basketball"] .offline-status, body[data-screen="basketball"] .adult-button { padding-top: 6px; padding-bottom: 6px; min-height: 36px; }
+:where(body[data-screen="basketball"]) .basketball-game { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 4px 0 0; max-width: 1200px; gap: 8px; }
+body[data-screen="basketball"] .game-heading { flex-shrink: 0; margin: 0; }
+body[data-screen="basketball"] .game-heading h1 { font-size: clamp(25px, 3vw, 34px); }
+:where(body[data-screen="basketball"]) .basketball-toolbar { display: flex; align-items: center; gap: 14px; flex-shrink: 0; padding: 0 8px; }
+:where(body[data-screen="basketball"]) .basketball-counter, :where(body[data-screen="basketball"]) .basketball-clock { display: flex; align-items: center; gap: 10px; color: #75664e; }
+:where(body[data-screen="basketball"]) .basketball-toolbar span { font-size: 12px; }
+:where(body[data-screen="basketball"]) .basketball-toolbar output { font-size: 27px; line-height: 1.2; font-weight: 800; font-variant-numeric: tabular-nums; }
+:where(body[data-screen="basketball"]) .basketball-score { color: #5f7b62; }
+:where(body[data-screen="basketball"]) .basketball-level { flex: 1; margin: 0; text-align: center; color: #7e856c; font-size: 12px; }
+:where(body[data-screen="basketball"]) .basketball-pause { width: 44px; height: 44px; flex-shrink: 0; }
+:where(body[data-screen="basketball"]) .basketball-pause .icon { width: 20px; height: 20px; }
+:where(body[data-screen="basketball"]) .basketball-pause:disabled { opacity: .4; }
+:where(body[data-screen="basketball"]) .basketball-clock.is-ending { color: #a45842; }
+:where(body[data-screen="basketball"]) .basketball-court { position: relative; flex: 1; min-height: 0; overflow: hidden; border-radius: 26px; border: 2px solid #dfd5be; background: #f1dfc5; isolation: isolate; }
+:where(body[data-screen="basketball"]) .basketball-canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; cursor: grab; }
+:where(body[data-screen="basketball"]) .basketball-canvas:active { cursor: grabbing; }
+:where(body[data-screen="basketball"]) .basketball-canvas:focus-visible { outline: 3px solid #789579; outline-offset: -5px; border-radius: 24px; }
+:where(body[data-screen="basketball"]) .basketball-feedback { position: absolute; top: 58%; left: 50%; transform: translateX(-50%); padding: 9px 18px; border-radius: 20px; background: #fffaf0ed; color: #657751; font-size: clamp(14px, 2vw, 20px); font-weight: 750; white-space: nowrap; pointer-events: none; box-shadow: 0 3px 10px #82653c12; }
+:where(body[data-screen="basketball"]) .basketball-feedback:empty { display: none; }
+:where(body[data-screen="basketball"]) .basketball-overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: 12px; overflow: auto; background: #f4eddd45; }
+:where(body[data-screen="basketball"]) .basketball-overlay[hidden] { display: none; }
+:where(body[data-screen="basketball"]) .basketball-card { width: min(390px, 100%); margin: auto; padding: clamp(18px, 3vh, 30px); text-align: center; border: 1.5px solid #ddd2ba; border-radius: 26px; background: #fffaf0f5; box-shadow: 0 10px 40px #6e54311a; color: #74634e; }
+:where(body[data-screen="basketball"]) .basketball-eyebrow { font-size: 10px; font-weight: 750; letter-spacing: 2px; color: #8b9275; }
+:where(body[data-screen="basketball"]) .basketball-card h2 { font-size: clamp(25px, 4vw, 34px); margin: 9px 0 16px; color: #6c795b; letter-spacing: -.8px; }
+:where(body[data-screen="basketball"]) .basketball-card p { font-size: 14px; line-height: 1.6; margin: 12px 0; }
+:where(body[data-screen="basketball"]) .basketball-card .basketball-card-note { font-size: 12px; color: #8c7c65; }
+:where(body[data-screen="basketball"]) .basketball-card button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 8px; background: #718765; color: #fffdf4; border-color: #718765; }
+:where(body[data-screen="basketball"]) .basketball-final-score { color: #bf8259; font-size: 68px; font-weight: 800; line-height: 1; }
+:where(body[data-screen="basketball"]) .basketball-final-score span { display: block; margin-top: 6px; font-size: 15px; font-weight: 600; }
+:where(body[data-screen="basketball"]) .basketball-help { flex-shrink: 0; text-align: center; color: #827c67; font-size: 11px; margin: 0; line-height: 1.4; }
+@media (max-width: 480px) {
+  body[data-screen="basketball"] .brand { font-size: 29px; }
+  body[data-screen="basketball"] .brand-sun { width: 32px; height: 32px; }
+  :where(body[data-screen="basketball"]) .basketball-toolbar { gap: 9px; padding: 0; }
+  :where(body[data-screen="basketball"]) .basketball-counter, :where(body[data-screen="basketball"]) .basketball-clock { gap: 6px; }
+  :where(body[data-screen="basketball"]) .basketball-level { font-size: 10px; max-width: 90px; margin: auto; }
+  :where(body[data-screen="basketball"]) .basketball-toolbar span { font-size: 10px; }
+  :where(body[data-screen="basketball"]) .basketball-toolbar output { font-size: 24px; }
+  :where(body[data-screen="basketball"]) .basketball-help { font-size: 10px; }
+}
+@media (max-height: 600px) {
+  body[data-screen="basketball"] .app-header { height: 44px; }
+  body[data-screen="basketball"] .game-heading { position: absolute; top: -45px; left: 50%; transform: translateX(-50%); z-index: 1; }
+  body[data-screen="basketball"] .brand { visibility: hidden; }
+  body[data-screen="basketball"] .game-heading h1 { font-size: 23px; }
+  :where(body[data-screen="basketball"]) .basketball-game { gap: 4px; }
+  :where(body[data-screen="basketball"]) .basketball-card { padding: 14px; }
+  :where(body[data-screen="basketball"]) .basketball-card h2 { margin: 3px 0 8px; font-size: 24px; }
+  :where(body[data-screen="basketball"]) .basketball-card p { margin: 6px 0; font-size: 12px; }
+  :where(body[data-screen="basketball"]) .basketball-card-note { display: none; }
+  :where(body[data-screen="basketball"]) .basketball-final-score { font-size: 40px; }
+  :where(body[data-screen="basketball"]) .basketball-help { display: none; }
+}

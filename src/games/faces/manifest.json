@@ -1,7 +1,7 @@
 {
   "id": "faces",
   "name": "Caras locas",
-  "subtitle": "¡Mil caras para inventar!",
+  "subtitle": "Elegí las partes de tu personaje",
   "order": 5,
   "cover": "assets/images/ai-v1/cover.png",
   "theme": {
