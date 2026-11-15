@@ -8,7 +8,7 @@ export const categories = [
   { id: 'makeup', label: 'Maquillaje', names: ['Sin maquillaje', 'Rubor', 'Pecas doradas', 'Estrellitas'] },
   { id: 'earrings', label: 'Aritos', names: ['Sin aritos', 'Estrellas', 'Corazones', 'Perlitas'] },
   { id: 'accessory', label: 'Accesorios', names: ['Sin accesorio', 'Corona', 'Anteojos', 'Moñito'] },
-  { id: 'outfit', label: 'Ropa', names: ['A rayas', 'Jardinero', 'Con capucha', 'Un corazón'] },
+  { id: 'outfit', label: 'Ropa', names: ['A rayas', 'Jardinero', 'Con capucha', 'Un corazón', 'Vestido de flores', 'Chomba Lausanne', 'Pulóver beige', 'Bata de ratoncita', 'Argentina 2026', 'Vestido de Bella', 'Vestido de Rapunzel', 'Vestido de Bella Durmiente'] },
 ];
 
 export const skinColors = [
@@ -33,7 +33,7 @@ export function normalizeFace(value) {
   const result = { ...defaultFace };
   if (!value || typeof value !== 'object') return result;
   for (const key of [...categories.map(item => item.id), 'skin', 'hairColor']) {
-    const max = key === 'skin' ? skinColors.length : key === 'hairColor' ? hairColors.length : 4;
+    const max = key === 'skin' ? skinColors.length : key === 'hairColor' ? hairColors.length : categories.find(item => item.id === key).names.length;
     if (Number.isInteger(value[key]) && value[key] >= 0 && value[key] < max) result[key] = value[key];
   }
   return result;
