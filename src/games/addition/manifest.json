@@ -1,0 +1,14 @@
+{
+  "id": "addition",
+  "name": "A sumar",
+  "subtitle": "Contamos y juntamos",
+  "order": 9,
+  "cover": "assets/images/apple.png",
+  "theme": {
+    "background": "#f3dfd2",
+    "button": "#e5ead9",
+    "ink": "#94624d",
+    "spark": "#be8569"
+  },
+  "adultNote": "A sumar propone cantidades de 1 a 10 por grupo, con resultados de hasta 20. Los dibujos pueden marcarse al tocarlos para ayudar a contar. Sin tiempo límite ni penalizaciones; funciona sin internet."
+}

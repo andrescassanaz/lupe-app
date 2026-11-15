@@ -1,0 +1,13 @@
+{
+  "id": "faces",
+  "name": "Caras locas",
+  "subtitle": "¡Mil caras para inventar!",
+  "order": 5,
+  "cover": "assets/images/ai-v1/cover.png",
+  "theme": {
+    "background": "#e8e0f0",
+    "button": "#e8e0f0",
+    "ink": "#8872aa",
+    "spark": "#a58abd"
+  }
+}

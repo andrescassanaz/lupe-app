@@ -1,0 +1,14 @@
+{
+  "id": "writing",
+  "name": "A escribir",
+  "subtitle": "Tus palabras tienen voz",
+  "order": 4,
+  "cover": "assets/images/ai-v1/writing.png",
+  "theme": {
+    "background": "#f4e5b6",
+    "button": "#f4e5b6",
+    "ink": "#8b6b2f",
+    "spark": "#be9344"
+  },
+  "adultNote": "«A escribir» usa una voz en español instalada en el dispositivo: probá el botón Escuchar en modo avión. Si falta una voz, pedile a una persona grande que la descargue desde los ajustes de voz del dispositivo."
+}

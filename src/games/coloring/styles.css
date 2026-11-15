@@ -1,0 +1,79 @@
+:where(body[data-screen="coloring"]) .coloring-game { max-width: 1400px; }
+:where(body[data-screen="coloring"]) .drawing-picker { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 12px; margin: 14px 0; scrollbar-width: thin; }
+:where(body[data-screen="coloring"]) .drawing-picker button { flex: 0 0 158px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 5px 5px 9px; border: 2px solid #e4ddce; border-radius: 15px; background: #fffcf5; font-size: 11px; font-weight: 700; }
+:where(body[data-screen="coloring"]) .drawing-picker img { width: 100%; height: 78px; object-fit: cover; border-radius: 9px; pointer-events: none; background: white; }
+:where(body[data-screen="coloring"]) .drawing-picker button[aria-pressed="true"] { border-color: #8d79a9; background: #eee7f5; }
+:where(body[data-screen="coloring"]) .coloring-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 20px; align-items: start; }
+:where(body[data-screen="coloring"]) .coloring-paper { min-width: 0; background: #fffdf8; border: 1.5px solid #e4ded3; border-radius: 20px; box-shadow: 0 5px 0 #eae3d7; overflow: hidden; }
+:where(body[data-screen="coloring"]) .paper-caption { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; color: #827a6c; font-size: 11px; }
+:where(body[data-screen="coloring"]) .paper-caption > :first-child { color: #606756; font-weight: 750; }
+:where(body[data-screen="coloring"]) .coloring-canvas { display: block; width: 100%; height: auto; background: white; isolation: isolate; }
+:where(body[data-screen="coloring"]) .coloring-region { cursor: pointer; touch-action: manipulation; stroke: none; }
+:where(body[data-screen="coloring"]) .coloring-region:focus-visible { outline: 3px solid #3977a7; outline-offset: -3px; }
+:where(body[data-screen="coloring"]) .coloring-ink { mix-blend-mode: multiply; pointer-events: none; }
+:where(body[data-screen="coloring"]) .coloring-message { text-align: center; color: #727963; font-size: 12px; padding: 12px; margin: 0; }
+:where(body[data-screen="coloring"]) .coloring-tools { background: #f1ecdf; border-radius: 22px; padding: 16px; }
+:where(body[data-screen="coloring"]) .coloring-tools .eyebrow { font-size: 10px; letter-spacing: 1.6px; margin-bottom: 10px; }
+:where(body[data-screen="coloring"]) .material-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 18px; }
+:where(body[data-screen="coloring"]) .material-picker button { border: 2px solid #e1d9c9; background: #fffbf1; border-radius: 14px; min-height: 83px; padding: 4px 1px; font-size: 10px; font-weight: 700; }
+:where(body[data-screen="coloring"]) .material-picker img { display: block; width: 100%; height: 52px; object-fit: contain; margin: 0 auto 4px; pointer-events: none; }
+:where(body[data-screen="coloring"]) .material-picker button[aria-pressed="true"] { border-color: #8d79a9; background: #eee7f5; box-shadow: 0 2px 0 #c9bcd9; }
+:where(body[data-screen="coloring"]) .color-picker { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: 8px; }
+:where(body[data-screen="coloring"]) .color-picker button { display: grid; place-items: center; width: 44px; height: 44px; margin: auto; border-radius: 50%; background: var(--swatch); border: 2px solid #00000012; box-shadow: inset 0 -3px 0 #0000000b; }
+:where(body[data-screen="coloring"]) .color-picker button[aria-pressed="true"] { outline: 2px solid #6f695f; outline-offset: 2px; }
+:where(body[data-screen="coloring"]) .color-picker .icon { width: 20px; height: 20px; color: #333e36; filter: drop-shadow(0 1px 1px #fff); }
+:where(body[data-screen="coloring"]) .material-preview { display: flex; align-items: center; gap: 11px; margin: 14px 0; }
+:where(body[data-screen="coloring"]) .material-preview > svg { width: 44px; height: 44px; }
+:where(body[data-screen="coloring"]) .material-preview strong { display: block; font-size: 13px; }
+:where(body[data-screen="coloring"]) .material-preview small { display: block; margin-top: 3px; color: #746d60; font-size: 11px; }
+:where(body[data-screen="coloring"]) .coloring-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+:where(body[data-screen="coloring"]) .coloring-actions button, :where(body[data-screen="coloring"]) .coloring-listen, :where(body[data-screen="coloring"]) .coloring-download { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; min-height: 44px; }
+:where(body[data-screen="coloring"]) .coloring-actions button, :where(body[data-screen="coloring"]) .coloring-listen { background: #fffbf2; border-color: #e0d8c9; }
+:where(body[data-screen="coloring"]) .coloring-tools .icon { width: 19px; height: 19px; }
+:where(body[data-screen="coloring"]) .coloring-download { width: 100%; margin-bottom: 10px; }
+:where(body[data-screen="coloring"]) .coloring-listen { margin-top: 10px; width: 100%; }
+:where(body[data-screen="coloring"]) .reset-confirm { margin-top: 12px; padding-top: 12px; border-top: 1px solid #d9d0bf; }
+:where(body[data-screen="coloring"]) .reset-confirm p { font-size: 12px; margin-bottom: 8px; }
+:where(body[data-screen="coloring"]) .reset-confirm button { margin: 4px 0; width: 100%; }
+:where(body[data-screen="coloring"]) .drawing-state { padding: 70px 20px; text-align: center; color: #7c8173; }
+:where(body[data-screen="coloring"]) .drawing-state button { margin-top: 18px; }
+@media (max-width: 900px) {
+  :where(body[data-screen="coloring"]) .coloring-layout { grid-template-columns: minmax(0, 1fr) 248px; gap: 12px; }
+  :where(body[data-screen="coloring"]) .coloring-tools { padding: 12px; }
+}
+@media (max-width: 700px) {
+  :where(body[data-screen="coloring"]) .coloring-layout { display: flex; flex-direction: column; gap: 16px; }
+  :where(body[data-screen="coloring"]) .coloring-paper, :where(body[data-screen="coloring"]) .coloring-tools { width: 100%; }
+  :where(body[data-screen="coloring"]) .drawing-picker button { flex-basis: 118px; font-size: 10px; }
+  :where(body[data-screen="coloring"]) .drawing-picker img { height: 60px; }
+  :where(body[data-screen="coloring"]) .material-picker img { height: 58px; }
+  :where(body[data-screen="coloring"]) .color-picker { grid-template-columns: repeat(6, minmax(44px, 1fr)); gap: 8px 4px; }
+  :where(body[data-screen="coloring"]) .coloring-actions { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 370px) {
+  :where(body[data-screen="coloring"]) .color-picker { grid-template-columns: repeat(4, minmax(44px, 1fr)); }
+}
+:where(body[data-screen="coloring"]) .paint-color-rosa { --swatch: #edb1c4; }
+:where(body[data-screen="coloring"]) .paint-color-rojo { --swatch: #dc8984; }
+:where(body[data-screen="coloring"]) .paint-color-naranja { --swatch: #efb282; }
+:where(body[data-screen="coloring"]) .paint-color-amarillo { --swatch: #f1d98d; }
+:where(body[data-screen="coloring"]) .paint-color-verde { --swatch: #a8bf8b; }
+:where(body[data-screen="coloring"]) .paint-color-menta { --swatch: #a8d3be; }
+:where(body[data-screen="coloring"]) .paint-color-celeste { --swatch: #b0d2e3; }
+:where(body[data-screen="coloring"]) .paint-color-azul { --swatch: #92a9d2; }
+:where(body[data-screen="coloring"]) .paint-color-violeta { --swatch: #b7a0ce; }
+:where(body[data-screen="coloring"]) .paint-color-lila { --swatch: #d5c3e4; }
+:where(body[data-screen="coloring"]) .paint-color-lavanda { --swatch: #c2c4e3; }
+:where(body[data-screen="coloring"]) .paint-color-coral { --swatch: #eaa298; }
+:where(body[data-screen="coloring"]) .paint-color-durazno { --swatch: #f3c6ac; }
+:where(body[data-screen="coloring"]) .paint-color-crema { --swatch: #f5e6be; }
+:where(body[data-screen="coloring"]) .paint-color-salvia { --swatch: #bcc9a9; }
+:where(body[data-screen="coloring"]) .paint-color-turquesa { --swatch: #8ebfbf; }
+:where(body[data-screen="coloring"]) .paint-color-piel-clara { --swatch: #f2d4c2; }
+:where(body[data-screen="coloring"]) .paint-color-piel-media { --swatch: #d8ab89; }
+:where(body[data-screen="coloring"]) .paint-color-piel-oscura { --swatch: #9d745d; }
+:where(body[data-screen="coloring"]) .paint-color-marron { --swatch: #b99377; }
+:where(body[data-screen="coloring"]) .paint-color-cacao { --swatch: #775d52; }
+:where(body[data-screen="coloring"]) .paint-color-gris { --swatch: #b5b6b5; }
+:where(body[data-screen="coloring"]) .paint-color-pizarra { --swatch: #6d7885; }
+:where(body[data-screen="coloring"]) .paint-color-blanco { --swatch: #fffaf0; }

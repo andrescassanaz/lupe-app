@@ -1,0 +1,21 @@
+:where(body[data-screen="differences"]) .differences-game { max-width: 1100px; }
+:where(body[data-screen="differences"]) .differences-progress { display: flex; gap: 10px; justify-content: center; margin: 20px auto; }
+:where(body[data-screen="differences"]) .differences-progress span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 2px dashed #d8ccba; color: #a18d72; font-weight: 750; }
+:where(body[data-screen="differences"]) .differences-progress .is-found { background: #397762; color: white; border-style: solid; border-color: #397762; }
+:where(body[data-screen="differences"]) .differences-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+:where(body[data-screen="differences"]) .differences-frame { background: #fffdf8; padding: 10px; border: 2px solid #e9e1d6; border-radius: 25px; box-shadow: 0 5px 0 #eae3d7; }
+:where(body[data-screen="differences"]) .differences-frame > p { color: #85745a; text-align: center; padding: 5px 0 12px; font-size: 14px; font-weight: 750; }
+:where(body[data-screen="differences"]) .differences-picture { position: relative; aspect-ratio: 1; border-radius: 17px; overflow: hidden; }
+:where(body[data-screen="differences"]) .differences-base { width: 100%; height: 100%; display: block; pointer-events: none; }
+:where(body[data-screen="differences"]) .differences-target { position: absolute; width: 16%; height: 16%; min-width: 44px; min-height: 44px; transform: translate(-50%,-50%); display: grid; place-items: center; border-radius: 50%; border: 3px solid transparent; background: transparent; color: #397762; }
+:where(body[data-screen="differences"]) .differences-target.is-found { pointer-events: none; border-color: #397762; background: #eaf0e355; }
+:where(body[data-screen="differences"]) .differences-target .icon { width: 23px; height: 23px; filter: drop-shadow(0 1px 1px white); }
+:where(body[data-screen="differences"]) .differences-target.is-hint { border-color: #c78b37; border-style: dashed; background: #f4e5b655; }
+:where(body[data-screen="differences"]) .differences-message { text-align: center; margin: 22px auto 16px; min-height: 26px; line-height: 1.5; color: #57765a; }
+:where(body[data-screen="differences"]) .differences-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+:where(body[data-screen="differences"]) .differences-actions button { min-height: 54px; display: flex; align-items: center; gap: 10px; }
+@media(max-width:600px) {
+ :where(body[data-screen="differences"]) .differences-pair { grid-template-columns: 1fr; gap: 14px; max-width: 420px; margin: auto; }
+ :where(body[data-screen="differences"]) .differences-frame { padding: 8px; }
+ :where(body[data-screen="differences"]) .differences-progress { margin: 14px auto; gap: 7px; }
+}

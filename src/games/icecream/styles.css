@@ -1,0 +1,121 @@
+:where(body[data-screen="icecream"]) .icecream-layout {
+  display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(100px, 1fr);
+  gap: 16px 28px; align-items: center; max-width: 1020px; margin: 18px auto 0;
+}
+:where(body[data-screen="icecream"]) .customer-scene { padding-top: 76px; min-width: 0; }
+:where(body[data-screen="icecream"]) .shop-front { position: relative; max-width: 540px; margin: auto; aspect-ratio: 3 / 2; }
+:where(body[data-screen="icecream"]) .shop-building { width: 100%; height: 100%; border-radius: 24px; }
+:where(body[data-screen="icecream"]) .customer { position: absolute; left: 23%; bottom: 22%; width: 29%; height: 30%; object-fit: contain; }
+:where(body[data-screen="icecream"]) .order-bubble { position: absolute; z-index: 3; top: -76px; left: 10%; width: 80%; min-height: 74px; display: flex; align-items: center; justify-content: center; border: 2px solid #e5dac8; background: #fffdf8; border-radius: 23px; padding: 10px 55px 10px 12px; box-shadow: 0 4px 0 #ece2d3; }
+:where(body[data-screen="icecream"]) .order-bubble::after { content: ''; position: absolute; bottom: -10px; left: 30%; width: 18px; height: 18px; background: #fffdf8; border-right: 2px solid #e5dac8; border-bottom: 2px solid #e5dac8; transform: rotate(45deg); }
+:where(body[data-screen="icecream"]) .order-scoops { display: flex; align-items: center; justify-content: center; gap: 6px; }
+:where(body[data-screen="icecream"]) .scoop { display: inline-flex; position: relative; flex-shrink: 0; width: 55px; height: 48px; }
+:where(body[data-screen="icecream"]) .scoop-art { position: absolute; inset: -10% 0 0; width: 100%; height: 110%; object-fit: fill; }
+/* The opaque green original avoids green being removed by transparency generation.
+   Reuse the matching scoop silhouette as its display mask. */
+:where(body[data-screen="icecream"]) .pistacho .scoop-art { mask: url('./assets/images/ai-v1/scoop-frutilla.png') center / 100% 100% no-repeat; }
+:where(body[data-screen="icecream"]) .order-audio { position: absolute; width: 44px; height: 44px; right: 6px; background: #f0ece3; border: 0; box-shadow: none; }
+:where(body[data-screen="icecream"]) .order-audio .icon { width: 22px; height: 22px; }
+:where(body[data-screen="icecream"]) .hint { border-color: #daa14c; animation: icecream-nudge 450ms ease-in-out; }
+:where(body[data-screen="icecream"]) .order-success { border-color: #78a68a; }
+:where(body[data-screen="icecream"]) .prepared-icecream { position: relative; width: 180px; height: 340px; justify-self: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 20px; }
+:where(body[data-screen="icecream"]) .prepared-icecream::after { content: ''; width: 135px; height: 16px; border-radius: 50%; background: #eae0cf; position: absolute; bottom: 8px; z-index: 0; }
+:where(body[data-screen="icecream"]) .cone { width: 96px; height: 120px; object-fit: fill; transform: translateY(-8%) scaleX(1.1); z-index: 1; }
+:where(body[data-screen="icecream"]) .scoop-stack { display: flex; flex-direction: column; align-items: center; z-index: 2; margin-bottom: -14px; }
+:where(body[data-screen="icecream"]) .scoop-stack .scoop { width: 105px; height: 70px; margin-top: -24px; }
+:where(body[data-screen="icecream"]) .scoop-guide { position: absolute; top: 115px; width: 80px; height: 70px; border: 2px dashed #cabca7; border-radius: 50%; display: grid; place-items: center; color: #ad9f89; }
+:where(body[data-screen="icecream"]) .flavor-tray { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px; padding: 13px; border: 2px solid #e0ceba; border-radius: 24px; background: #f0e4d4; box-shadow: 0 6px 0 #ddc7b1; }
+:where(body[data-screen="icecream"]) .flavor { min-width: 0; min-height: 94px; border: 1px solid #dfd5c8; border-radius: 15px; background: #fffbf4; box-shadow: 0 3px 0 #d6c6b4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px 3px; font-size: 11px; font-weight: 750; line-height: 1.15; }
+:where(body[data-screen="icecream"]) .flavor-preview { width: 60px; height: 48px; }
+:where(body[data-screen="icecream"]) .flavor > span:last-child { min-height: 26px; display: flex; align-items: center; justify-content: center; }
+:where(body[data-screen="icecream"]) .flavor:disabled { opacity: .65; }
+:where(body[data-screen="icecream"]) .flavor:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+:where(body[data-screen="icecream"]) .icecream-actions { grid-column: 1 / -1; display: flex; gap: 14px; width: min(100%, 440px); justify-self: center; margin-top: 4px; }
+:where(body[data-screen="icecream"]) .undo-button { display: grid; place-items: center; min-width: 60px; min-height: 54px; background: #f0eadd; border: 2px solid #e0d7c7; border-radius: 18px; box-shadow: 0 4px 0 #ded6c5; }
+:where(body[data-screen="icecream"]) .undo-button:disabled { opacity: .4; }
+:where(body[data-screen="icecream"]) .deliver-button { min-height: 54px; padding: 10px 22px; border: 0; border-radius: 18px; background: var(--green); color: #fffdf2; box-shadow: 0 5px 0 #285b49; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 22px; font-weight: 750; flex: 1; }
+:where(body[data-screen="icecream"]) .deliver-button:disabled { background: #d6dbce; box-shadow: 0 4px 0 #c3cbbb; color: #65745f; }
+:where(body[data-screen="icecream"]) .deliver-button:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 #285b49; }
+:where(body[data-screen="icecream"]) .game-message { grid-column: 1 / -1; margin: 0; }
+@keyframes icecream-nudge { 0%, 100% { transform: translateX(0); } 30% { transform: translateX(-5px); } 70% { transform: translateX(5px); } }
+@media (max-width: 750px) {
+  :where(body[data-screen="icecream"]) .icecream-layout { gap: 12px; grid-template-columns: minmax(0, 2fr) minmax(78px, 1fr); }
+  :where(body[data-screen="icecream"]) .order-bubble { left: 0; width: 100%; }
+  :where(body[data-screen="icecream"]) .order-scoops { gap: 1px; }
+  :where(body[data-screen="icecream"]) .order-scoops .scoop { width: 36px; height: 36px; }
+  :where(body[data-screen="icecream"]) .prepared-icecream { width: 100px; height: 240px; padding-bottom: 12px; }
+  :where(body[data-screen="icecream"]) .prepared-icecream::after { width: 85px; height: 10px; bottom: 2px; }
+  :where(body[data-screen="icecream"]) .cone { width: 65px; height: 85px; }
+  :where(body[data-screen="icecream"]) .scoop-stack .scoop { width: 74px; height: 53px; margin-top: -19px; }
+  :where(body[data-screen="icecream"]) .scoop-guide { width: 60px; height: 52px; top: 82px; }
+  :where(body[data-screen="icecream"]) .flavor-tray { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 10px; gap: 7px; }
+  :where(body[data-screen="icecream"]) .flavor { min-height: 72px; font-size: 11px; }
+  :where(body[data-screen="icecream"]) .flavor-preview { width: 50px; height: 39px; }
+  :where(body[data-screen="icecream"]) .flavor > span:last-child { min-height: 14px; }
+}
+@media (max-width: 450px) {
+  :where(body[data-screen="icecream"]) .icecream-layout { margin-top: 12px; gap: 10px; }
+  :where(body[data-screen="icecream"]) .customer-scene { padding-top: 62px; }
+  :where(body[data-screen="icecream"]) .order-bubble { top: -62px; min-height: 60px; padding: 8px 43px 8px 5px; border-radius: 18px; }
+  :where(body[data-screen="icecream"]) .order-audio { right: 0; }
+  :where(body[data-screen="icecream"]) .order-scoops .scoop { width: 29px; height: 30px; }
+  :where(body[data-screen="icecream"]) .prepared-icecream { width: 85px; height: 210px; }
+  :where(body[data-screen="icecream"]) .scoop-stack .scoop { width: 68px; height: 47px; margin-top: -18px; }
+  :where(body[data-screen="icecream"]) .cone { width: 56px; height: 75px; }
+  :where(body[data-screen="icecream"]) .scoop-guide { top: 62px; }
+  :where(body[data-screen="icecream"]) .deliver-button { font-size: 19px; }
+}
+@media (max-width: 450px) and (max-height: 700px) {
+  :where(body[data-screen="icecream"]) .icecream-layout { gap: 8px; }
+  :where(body[data-screen="icecream"]) .prepared-icecream { height: 165px; }
+  :where(body[data-screen="icecream"]) .scoop-stack .scoop { height: 37px; width: 58px; margin-top: -15px; }
+  :where(body[data-screen="icecream"]) .cone { width: 46px; height: 58px; }
+  :where(body[data-screen="icecream"]) .scoop-guide { top: 45px; width: 50px; height: 45px; }
+  :where(body[data-screen="icecream"]) .flavor { min-height: 59px; padding: 3px; font-size: 10px; }
+  :where(body[data-screen="icecream"]) .flavor-preview { width: 40px; height: 30px; }
+  :where(body[data-screen="icecream"]) .flavor-tray { padding: 7px; gap: 6px; }
+  :where(body[data-screen="icecream"]) .deliver-button, :where(body[data-screen="icecream"]) .undo-button { min-height: 44px; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  :where(body[data-screen="icecream"]) .icecream-layout { grid-template-columns: minmax(0, 1.2fr) minmax(80px, .5fr) minmax(0, 1.3fr); gap: 9px 16px; margin-top: 10px; }
+  :where(body[data-screen="icecream"]) .customer-scene { padding-top: 60px; }
+  :where(body[data-screen="icecream"]) .order-bubble { left: 0; width: 100%; top: -60px; min-height: 58px; padding: 5px 44px 5px 5px; }
+  :where(body[data-screen="icecream"]) .order-scoops .scoop { width: 29px; height: 30px; }
+  :where(body[data-screen="icecream"]) .prepared-icecream { width: 90px; height: 190px; padding-bottom: 12px; }
+  :where(body[data-screen="icecream"]) .cone { width: 50px; height: 66px; }
+  :where(body[data-screen="icecream"]) .scoop-stack .scoop { width: 63px; height: 42px; margin-top: -17px; }
+  :where(body[data-screen="icecream"]) .scoop-guide { top: 55px; width: 50px; height: 44px; }
+  :where(body[data-screen="icecream"]) .flavor-tray { grid-column: 3; grid-row: 1; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 6px; gap: 5px; }
+  :where(body[data-screen="icecream"]) .flavor { min-height: 56px; font-size: 9px; padding: 3px; }
+  :where(body[data-screen="icecream"]) .flavor-preview { width: 38px; height: 29px; }
+  :where(body[data-screen="icecream"]) .flavor > span:last-child { min-height: 20px; }
+  :where(body[data-screen="icecream"]) .icecream-actions { margin: 0; grid-column: 2 / -1; grid-row: 2; }
+  :where(body[data-screen="icecream"]) .game-message { grid-column: 1; grid-row: 2; }
+  :where(body[data-screen="icecream"]) .deliver-button, :where(body[data-screen="icecream"]) .undo-button { min-height: 44px; font-size: 17px; padding: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { :where(body[data-screen="icecream"]) .hint { animation: none; } }
+/* Keep the serving controls close to the counter on shorter screens. */
+@media (min-width: 751px) and (min-height: 601px) and (max-height: 950px) {
+  :where(body[data-screen="icecream"]) .icecream-game { padding-top: 10px; }
+  :where(body[data-screen="icecream"]) .shop-front { max-width: 400px; }
+  :where(body[data-screen="icecream"]) .icecream-layout { gap: 12px 28px; }
+}
+@media (max-width: 450px) and (max-height: 700px) {
+  :where(body[data-screen="icecream"]) .level-note { display: none; }
+  :where(body[data-screen="icecream"]) .icecream-layout { gap: 6px; }
+  :where(body[data-screen="icecream"]) .shop-front { max-width: 142px; }
+  :where(body[data-screen="icecream"]) .order-bubble { width: 184px; left: calc(50% - 92px); }
+  :where(body[data-screen="icecream"]) .prepared-icecream { height: 154px; }
+  :where(body[data-screen="icecream"]) .flavor { height: 54px; min-height: 54px; flex-direction: row; font-size: 9.5px; }
+  :where(body[data-screen="icecream"]) .flavor-preview { width: 30px; height: 30px; }
+  :where(body[data-screen="icecream"]) .flavor > span:last-child { flex: 1; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  :where(body[data-screen="icecream"]) .level-note { display: none; }
+  :where(body[data-screen="icecream"]) .shop-front { max-width: 190px; }
+  :where(body[data-screen="icecream"]) .order-bubble { width: 225px; left: calc(50% - 112.5px); }
+  :where(body[data-screen="icecream"]) .prepared-icecream { height: 180px; }
+  :where(body[data-screen="icecream"]) .flavor { height: 54px; min-height: 54px; }
+  :where(body[data-screen="icecream"]) .flavor-preview { height: 24px; width: 32px; }
+  :where(body[data-screen="icecream"]) .flavor-tray { gap: 4px; padding: 5px; }
+}

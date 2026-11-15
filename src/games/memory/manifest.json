@@ -1,0 +1,13 @@
+{
+  "id": "memory",
+  "name": "Memotest de animales",
+  "subtitle": "Doce pares para descubrir",
+  "order": 2,
+  "cover": "assets/images/ai-v1/memory.png",
+  "theme": {
+    "background": "#dce9d9",
+    "button": "#e0eada",
+    "ink": "#5a7b59",
+    "spark": "#69947b"
+  }
+}

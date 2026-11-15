@@ -1,0 +1,14 @@
+{
+  "id": "words",
+  "name": "Palabras amigas",
+  "subtitle": "¿Qué letrita falta?",
+  "order": 7,
+  "cover": "assets/images/cover.png",
+  "theme": {
+    "background": "#e8e0f0",
+    "button": "#e8e0f0",
+    "ink": "#8872aa",
+    "spark": "#8872aa"
+  },
+  "adultNote": "Palabras amigas puede leer las palabras con una voz local en español instalada en el dispositivo. Las pistas visuales y las letras funcionan también sin esa voz."
+}

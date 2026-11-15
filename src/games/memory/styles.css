@@ -1,0 +1,98 @@
+:where(body[data-screen="memory"]) .play-again { min-height: 62px; padding: 12px 24px; border: 0; border-radius: 20px; background: var(--green); color: #fffdf2; box-shadow: 0 5px 0 #285b49; display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 22px; font-weight: 750; flex: 1; }
+:where(body[data-screen="memory"]) .play-again:active { transform: translateY(3px); box-shadow: 0 2px 0 #285b49; }
+:where(body[data-screen="memory"]) .memory-game { max-width: 850px; }
+:where(body[data-screen="memory"]) .memory-progress { display: flex; justify-content: center; gap: 10px; margin: 18px auto; }
+:where(body[data-screen="memory"]) .pair-dot { border: 1.5px dashed #cdd4bf; color: #cdd4bf; border-radius: 50%; width: 33px; height: 33px; display: grid; place-items: center; }
+:where(body[data-screen="memory"]) .pair-dot .icon { width: 18px; height: 18px; stroke: none; }
+:where(body[data-screen="memory"]) .pair-dot.found { color: #fff; background: #83a486; border-style: solid; border-color: #83a486; }
+:where(body[data-screen="memory"]) .memory-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; width: min(100%, 660px); margin: auto; }
+:where(body[data-screen="memory"]) .memory-card { position: relative; aspect-ratio: 1.16; min-height: 0; border: 4px solid #fffdf5; border-radius: 23px; padding: 0; background: #7ca88b; box-shadow: 0 5px 0 #638772; overflow: hidden; transition: background 200ms, transform 160ms; }
+:where(body[data-screen="memory"]) .memory-card:active:not(:disabled) { transform: scale(.97); }
+:where(body[data-screen="memory"]) .card-back { position: absolute; inset: 8px; border: 1.5px dashed #c5dec370; border-radius: 14px; display: grid; place-items: center; color: #eaf0d8; }
+:where(body[data-screen="memory"]) .card-back .icon { width: 53px; height: 53px; stroke: none; transform: rotate(-12deg); }
+:where(body[data-screen="memory"]) .card-doodle { position: absolute; color: #cfe0ba; right: 14%; top: 12%; font-size: 19px; }
+:where(body[data-screen="memory"]) .card-front { display: none; width: 100%; height: 100%; }
+:where(body[data-screen="memory"]) .card-front .art { width: 86%; height: 86%; margin: 6% auto; }
+:where(body[data-screen="memory"]) .memory-card.face-up { background: #f5e5c5; border-color: #fffdf6; box-shadow: 0 5px 0 #dfccaa; }
+:where(body[data-screen="memory"]) .memory-card.face-up.animal-cat { background: #f5dbca; }
+:where(body[data-screen="memory"]) .memory-card.face-up.animal-cow { background: #e3e6df; }
+:where(body[data-screen="memory"]) .face-up .card-front { display: block; animation: memory-reveal 200ms ease-out; }
+:where(body[data-screen="memory"]) .face-up .card-back { display: none; }
+:where(body[data-screen="memory"]) .memory-card.matched { border-color: #a0bb8f; box-shadow: 0 5px 0 #91ab82; }
+:where(body[data-screen="memory"]) .matched-check { position: absolute; bottom: 6px; right: 6px; border-radius: 50%; padding: 4px; background: #739b75; color: white; }
+:where(body[data-screen="memory"]) .matched-check .icon { width: 17px; height: 17px; }
+:where(body[data-screen="memory"]) .memory-bottom { display: flex; justify-content: center; align-items: center; gap: 22px; min-height: 80px; margin-top: 14px; }
+:where(body[data-screen="memory"]) .memory-bottom .game-message { margin: 0; }
+:where(body[data-screen="memory"]) .small-listen { display: grid; place-items: center; border: 0; background: #eeeade; width: 46px; height: 46px; border-radius: 50%; color: #838772; flex-shrink: 0; }
+:where(body[data-screen="memory"]) .win-message { font-size: 20px; font-weight: 750; color: #57765a; }
+:where(body[data-screen="memory"]) .play-again { flex: 0 1 auto; font-size: 18px; min-height: 54px; gap: 12px; }
+@keyframes memory-reveal { from { opacity: .4; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 700px) {
+  :where(body[data-screen="memory"]) .memory-board { gap: 14px; max-width: 520px; }
+  :where(body[data-screen="memory"]) .memory-card { border-radius: 19px; }
+  :where(body[data-screen="memory"]) .card-back { inset: 5px; border-radius: 11px; }
+  :where(body[data-screen="memory"]) .card-back .icon { width: 40px; height: 40px; }
+  :where(body[data-screen="memory"]) .memory-bottom { gap: 15px; }
+  :where(body[data-screen="memory"]) .win-message { font-size: 16px; }
+}
+@media (max-width: 450px) and (orientation: portrait) {
+  :where(body[data-screen="memory"]) .memory-game { margin: auto; }
+  :where(body[data-screen="memory"]) .memory-board { gap: 12px; }
+  :where(body[data-screen="memory"]) .memory-card { aspect-ratio: .8; border-radius: 18px; }
+  :where(body[data-screen="memory"]) .card-back .icon { width: 37px; height: 37px; }
+  :where(body[data-screen="memory"]) .card-doodle { font-size: 14px; }
+  :where(body[data-screen="memory"]) .memory-bottom { flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  :where(body[data-screen="memory"]) .memory-bottom .game-message { font-size: 10px; }
+  :where(body[data-screen="memory"]) .play-again { min-height: 50px; font-size: 16px; }
+  :where(body[data-screen="memory"]) .matched-check { padding: 2px; right: 3px; bottom: 3px; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  :where(body[data-screen="memory"]) .memory-game { max-width: 610px; padding-top: 0; }
+  :where(body[data-screen="memory"]) .memory-progress { margin: 6px auto 9px; gap: 7px; }
+  :where(body[data-screen="memory"]) .pair-dot { width: 22px; height: 22px; }
+  :where(body[data-screen="memory"]) .pair-dot .icon { width: 13px; height: 13px; }
+  :where(body[data-screen="memory"]) .memory-board { max-width: min(56vh, 360px); gap: 11px; }
+  :where(body[data-screen="memory"]) .memory-card { aspect-ratio: 1.28; border-width: 3px; border-radius: 14px; }
+  :where(body[data-screen="memory"]) .card-back { inset: 4px; border-radius: 8px; }
+  :where(body[data-screen="memory"]) .card-back .icon { width: 28px; height: 28px; }
+  :where(body[data-screen="memory"]) .card-doodle { font-size: 12px; }
+  :where(body[data-screen="memory"]) .memory-bottom { min-height: 44px; margin-top: 10px; gap: 14px; }
+  :where(body[data-screen="memory"]) .memory-bottom .game-message { margin: 0; }
+  :where(body[data-screen="memory"]) .small-listen { width: 44px; height: 44px; }
+  :where(body[data-screen="memory"]) .play-again { min-height: 44px; font-size: 14px; border-radius: 14px; padding: 7px 17px; }
+  :where(body[data-screen="memory"]) .win-message { font-size: 15px; }
+}
+:where(body[data-screen="memory"]) .memory-game { max-width: 960px; }
+:where(body[data-screen="memory"]) .memory-board { grid-template-columns: repeat(6, minmax(0, 1fr)); width: min(100%, 860px); max-width: none; gap: 12px; }
+:where(body[data-screen="memory"]) .memory-card { aspect-ratio: 1.3; border-radius: 16px; }
+:where(body[data-screen="memory"]) .memory-progress { flex-wrap: wrap; gap: 7px; margin: 12px auto; }
+:where(body[data-screen="memory"]) .memory-progress .pair-dot { width: 25px; height: 25px; }
+:where(body[data-screen="memory"]) .memory-progress .icon { width: 14px; height: 14px; }
+:where(body[data-screen="memory"]) .card-back .icon { width: 32px; height: 32px; }
+:where(body[data-screen="memory"]) .memory-card.face-up.animal-frog { background: #dfe9c9; }
+:where(body[data-screen="memory"]) .memory-card.face-up.animal-owl { background: #ebe1ef; }
+:where(body[data-screen="memory"]) .memory-card.face-up.animal-penguin { background: #dbe8eb; }
+@media (max-width: 600px) {
+  :where(body[data-screen="memory"]) .memory-board { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  :where(body[data-screen="memory"]) .memory-card { aspect-ratio: 1.16; border-width: 3px; border-radius: 12px; }
+  :where(body[data-screen="memory"]) .card-back { inset: 3px; border-radius: 8px; }
+  :where(body[data-screen="memory"]) .card-doodle { display: none; }
+  :where(body[data-screen="memory"]) .card-back .icon { width: 25px; height: 25px; }
+  :where(body[data-screen="memory"]) .memory-progress { gap: 4px; }
+  :where(body[data-screen="memory"]) .memory-progress .pair-dot { width: 19px; height: 19px; }
+  :where(body[data-screen="memory"]) .memory-progress .icon { width: 11px; height: 11px; }
+  :where(body[data-screen="memory"]) .memory-game .level-note { font-size: 10px; }
+}
+@media (max-width: 450px) and (max-height: 700px) and (orientation: portrait) {
+  :where(body[data-screen="memory"]) .memory-progress { margin: 8px auto; }
+  :where(body[data-screen="memory"]) .memory-board { gap: 7px; }
+  :where(body[data-screen="memory"]) .memory-card { aspect-ratio: 1.3; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  :where(body[data-screen="memory"]) .memory-progress { margin: 6px auto; }
+  :where(body[data-screen="memory"]) .memory-progress .pair-dot { width: 18px; height: 18px; }
+  :where(body[data-screen="memory"]) .memory-board { width: min(100%, 620px); grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 7px; }
+  :where(body[data-screen="memory"]) .memory-card { height: 44px; aspect-ratio: auto; }
+  :where(body[data-screen="memory"]) .card-front .art { margin: 0 auto; height: 100%; }
+  :where(body[data-screen="memory"]) .memory-bottom { margin-top: 7px; }
+}

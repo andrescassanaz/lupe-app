@@ -1,0 +1,139 @@
+:where(body[data-screen="faces"]) .faces-game { max-width: 1100px; }
+:where(body[data-screen="faces"]) .game-heading p { color: #7b8175; margin: 8px 0 22px; font-size: 16px; }
+:where(body[data-screen="faces"]) .faces-heading-star { display: inline-block; color: #be9344; margin-left: 12px; font-size: 32px; vertical-align: middle; }
+:where(body[data-screen="faces"]) .faces-workshop { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.3fr); gap: 28px; align-items: stretch; }
+:where(body[data-screen="faces"]) .faces-stage { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: center; min-width: 0; overflow: hidden; border: 2px solid #e5ddc9; border-radius: 32px; background: radial-gradient(ellipse at 50% 48%, #fffaf0 0 48%, transparent 49%), #f0e9d7; padding: 18px 18px 14px; }
+:where(body[data-screen="faces"]) .faces-portrait { position: relative; width: 100%; max-width: 360px; aspect-ratio: 360 / 390; flex-shrink: 0; margin-top: 6px; overflow: hidden; isolation: isolate; }
+:where(body[data-screen="faces"]) .faces-layer { position: absolute; display: block; object-fit: fill; pointer-events: none; user-select: none; }
+:where(body[data-screen="faces"]) .faces-face { left: 24%; top: 14%; width: 52%; height: 56%; z-index: 2; }
+:where(body[data-screen="faces"]) .face-shape-2 .faces-face { top: 21%; height: 49%; }
+:where(body[data-screen="faces"]) .faces-ears { left: 17%; top: 38%; width: 66%; height: 18%; z-index: 1; }
+:where(body[data-screen="faces"]) .faces-outfit { left: 9%; top: 65%; width: 82%; height: 42%; z-index: 3; }
+:where(body[data-screen="faces"]) .faces-eyes { left: 32%; top: 37%; width: 36%; height: 13%; z-index: 5; }
+:where(body[data-screen="faces"]) .faces-nose { left: 44%; top: 47%; width: 12%; height: 10%; z-index: 6; object-fit: contain; }
+:where(body[data-screen="faces"]) .faces-mouth { left: 37%; top: 57%; width: 26%; height: 10%; z-index: 7; object-fit: contain; }
+:where(body[data-screen="faces"]) .faces-hair { left: 20%; top: 10%; width: 60%; height: 36%; z-index: 4; }
+:where(body[data-screen="faces"]) .hair-style-2 .faces-hair { left: 20%; top: 11%; width: 60%; height: 48%; }
+:where(body[data-screen="faces"]) .hair-style-3 .faces-hair { left: 10%; top: 10%; width: 80%; height: 42%; }
+:where(body[data-screen="faces"]) .faces-stage-caption { position: relative; z-index: 2; background: #fffaf0; border-radius: 20px; padding: 10px 18px; font-size: 13px; font-weight: 700; color: #85745a; margin-top: 4px; }
+:where(body[data-screen="faces"]) .faces-stage-star { position: absolute; color: #be9344; font-size: 32px; pointer-events: none; }
+:where(body[data-screen="faces"]) .faces-star-one { top: 30%; left: 7%; transform: rotate(-16deg); }
+:where(body[data-screen="faces"]) .faces-star-two { top: 59%; right: 7%; font-size: 25px; color: #a58abd; }
+:where(body[data-screen="faces"]) .faces-editor { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+:where(body[data-screen="faces"]) .faces-categories { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+:where(body[data-screen="faces"]) .faces-categories button { min-width: 0; min-height: 86px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 9px 3px; border: 2px solid #e9e1d6; border-radius: 18px; background: #fffdf8; font-size: 12px; font-weight: 750; box-shadow: 0 3px 0 #eae3d7; }
+:where(body[data-screen="faces"]) .faces-categories img { width: 35px; height: 32px; object-fit: contain; pointer-events: none; }
+:where(body[data-screen="faces"]) .faces-categories [aria-pressed="true"] { border-color: #8872aa; background: #eee6f4; color: #695583; box-shadow: 0 3px 0 #cfbfdf; }
+:where(body[data-screen="faces"]) .faces-options-panel { flex: 1; background: #fffdf8; border: 2px solid #e9e1d6; border-radius: 26px; padding: 20px; box-shadow: 0 5px 0 #eae3d7; }
+:where(body[data-screen="faces"]) .faces-part-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+:where(body[data-screen="faces"]) .faces-part-heading h2 { font-size: 23px; letter-spacing: -.5px; }
+:where(body[data-screen="faces"]) .faces-part-heading > span { font-size: 12px; color: #828075; }
+:where(body[data-screen="faces"]) .faces-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+:where(body[data-screen="faces"]) .faces-option { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 5px 10px; min-width: 0; min-height: 142px; background: #faf6ef; border: 2px solid #eae2d7; border-radius: 19px; font-weight: 700; font-size: 12px; }
+:where(body[data-screen="faces"]) .faces-option > img { width: 100%; height: 86px; object-fit: contain; pointer-events: none; }
+:where(body[data-screen="faces"]) .faces-option.is-selected { background: #eaf0e3; border-color: #739780; }
+:where(body[data-screen="faces"]) .faces-choice-check { position: absolute; top: -9px; right: -6px; display: grid; place-items: center; width: 27px; height: 27px; background: #397762; color: white; border: 3px solid #fffdf8; border-radius: 50%; }
+:where(body[data-screen="faces"]) .faces-choice-check .icon { width: 16px; height: 16px; }
+:where(body[data-screen="faces"]) .faces-colors { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid #eee7dd; margin-top: 20px; padding-top: 16px; }
+:where(body[data-screen="faces"]) .faces-colors > span { font-size: 13px; font-weight: 750; color: #777c70; }
+:where(body[data-screen="faces"]) .faces-colors > div { display: flex; gap: 8px; flex-wrap: wrap; }
+:where(body[data-screen="faces"]) .faces-swatch { display: grid; place-items: center; border-radius: 50%; border: 3px solid #fffdf8; width: 48px; height: 48px; box-shadow: 0 0 0 1px #d9d0c3; color: white; }
+:where(body[data-screen="faces"]) .faces-swatch.is-selected { box-shadow: 0 0 0 3px #397762; }
+:where(body[data-screen="faces"]) .faces-swatch .icon { filter: drop-shadow(0 1px 1px #635042); width: 23px; height: 23px; }
+:where(body[data-screen="faces"]) .faces-tip { color: #828075; font-size: 13px; margin-top: 24px; text-align: center; }
+:where(body[data-screen="faces"]) .faces-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+:where(body[data-screen="faces"]) .faces-actions button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 58px; padding: 12px 16px; font-size: 14px; border-radius: 19px; }
+:where(body[data-screen="faces"]) .faces-actions .primary-button { flex: 1; }
+:where(body[data-screen="faces"]) .faces-actions .faces-undo { padding: 12px; }
+:where(body[data-screen="faces"]) .faces-undo span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+:where(body[data-screen="faces"]) .faces-actions .secondary-button:first-child > span { color: #a58abd; font-size: 24px; }
+:where(body[data-screen="faces"]) .faces-status { min-height: 22px; color: #7b8175; font-size: 12px; text-align: center; line-height: 1.5; margin-top: 20px; }
+:where(body[data-screen="faces"]) .is-celebrating .faces-portrait { animation: faces-wiggle .6s ease; }
+@keyframes faces-wiggle { 20% { transform: rotate(-4deg); } 60% { transform: rotate(4deg); } }
+@media (max-width: 950px) {
+  :where(body[data-screen="faces"]) .faces-workshop { gap: 16px; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.3fr); }
+  :where(body[data-screen="faces"]) .faces-categories { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  :where(body[data-screen="faces"]) .faces-categories button { min-height: 68px; flex-direction: row; gap: 6px; font-size: 11px; padding: 6px; }
+  :where(body[data-screen="faces"]) .faces-categories img { width: 26px; height: 29px; }
+  :where(body[data-screen="faces"]) .faces-options-panel { padding: 16px; }
+  :where(body[data-screen="faces"]) .faces-options { gap: 8px; }
+  :where(body[data-screen="faces"]) .faces-option { min-height: 118px; font-size: 11px; }
+  :where(body[data-screen="faces"]) .faces-option > img { height: 64px; }
+  :where(body[data-screen="faces"]) .faces-part-heading > span { display: none; }
+  :where(body[data-screen="faces"]) .faces-stage { justify-content: center; padding: 14px 8px; }
+  :where(body[data-screen="faces"]) .faces-portrait { margin: 16px 0; }
+}
+@media (max-width: 600px) {
+  :where(body[data-screen="faces"]) .game-heading p { margin-bottom: 16px; font-size: 14px; }
+  :where(body[data-screen="faces"]) .faces-workshop { display: flex; flex-direction: column; gap: 14px; }
+  :where(body[data-screen="faces"]) .faces-stage { position: sticky; top: 8px; z-index: 10; height: 285px; padding: 10px; flex-shrink: 0; }
+  :where(body[data-screen="faces"]) .faces-portrait { width: 245px; margin: 0 0 0 32px; }
+  :where(body[data-screen="faces"]) .faces-stage-caption { position: absolute; bottom: 8px; left: 8px; padding: 7px 10px; font-size: 10px; }
+  :where(body[data-screen="faces"]) .faces-categories { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  :where(body[data-screen="faces"]) .faces-categories button { min-height: 60px; }
+  :where(body[data-screen="faces"]) .faces-editor { gap: 14px; }
+  :where(body[data-screen="faces"]) .faces-option { min-height: 108px; gap: 8px; font-size: 10px; }
+  :where(body[data-screen="faces"]) .faces-option > img { height: 60px; }
+  :where(body[data-screen="faces"]) .faces-swatch { width: 46px; height: 46px; }
+  :where(body[data-screen="faces"]) .faces-colors > div { gap: 7px; }
+  :where(body[data-screen="faces"]) .faces-actions button { font-size: 12px; padding: 10px 12px; }
+  :where(body[data-screen="faces"]) .faces-actions { gap: 8px; }
+}
+@media (max-width: 350px) {
+  :where(body[data-screen="faces"]) .faces-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :where(body[data-screen="faces"]) .faces-stage { height: 245px; }
+  :where(body[data-screen="faces"]) .faces-portrait { width: 215px; }
+  :where(body[data-screen="faces"]) .faces-categories button { flex-direction: column; gap: 4px; min-height: 70px; }
+}
+@media (max-height: 600px) and (min-width: 601px) and (orientation: landscape) {
+  :where(body[data-screen="faces"]) .game-heading p { display: none; }
+  :where(body[data-screen="faces"]) .faces-workshop { margin-top: 10px; grid-template-columns: minmax(180px, .75fr) minmax(0, 1.4fr); }
+  :where(body[data-screen="faces"]) .faces-stage { padding: 8px; }
+  :where(body[data-screen="faces"]) .faces-portrait { max-width: 225px; margin: 0; }
+  :where(body[data-screen="faces"]) .faces-stage-caption { display: none; }
+  :where(body[data-screen="faces"]) .faces-categories { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+  :where(body[data-screen="faces"]) .faces-categories button { min-height: 62px; flex-direction: column; gap: 3px; }
+  :where(body[data-screen="faces"]) .faces-categories img { width: 24px; height: 24px; }
+  :where(body[data-screen="faces"]) .faces-options-panel { padding: 12px; }
+  :where(body[data-screen="faces"]) .faces-part-heading { margin-bottom: 10px; }
+  :where(body[data-screen="faces"]) .faces-option { min-height: 86px; }
+  :where(body[data-screen="faces"]) .faces-option > img { height: 42px; }
+  :where(body[data-screen="faces"]) .faces-colors { margin-top: 12px; padding-top: 10px; }
+  :where(body[data-screen="faces"]) .faces-editor { gap: 12px; }
+  :where(body[data-screen="faces"]) .faces-tip { margin-top: 12px; }
+}
+/* Revised portrait: smaller features, natural body proportions and optional dress-up. */
+:where(body[data-screen="faces"]) .faces-portrait { aspect-ratio: 360 / 460; max-width: 360px; }
+:where(body[data-screen="faces"]) .faces-face { left: 24%; top: 13%; width: 52%; height: 46%; }
+:where(body[data-screen="faces"]) .face-shape-2 .faces-face { top: 18%; height: 41%; }
+:where(body[data-screen="faces"]) .faces-outfit { left: 15%; top: 53%; width: 70%; height: 47%; object-fit: contain; z-index: 1; }
+:where(body[data-screen="faces"]) .faces-eyes { left: 34%; top: 32%; width: 32%; height: 10%; object-fit: contain; }
+:where(body[data-screen="faces"]) .faces-nose { left: 46%; top: 40%; width: 8%; height: 6%; }
+:where(body[data-screen="faces"]) .faces-mouth { left: 42%; top: 45%; width: 16%; height: 5%; }
+:where(body[data-screen="faces"]) .faces-hair { left: 20%; top: 9%; width: 60%; height: 29%; }
+:where(body[data-screen="faces"]) .hair-style-2 .faces-hair { left: 20%; top: 10%; width: 60%; height: 39%; }
+:where(body[data-screen="faces"]) .hair-style-3 .faces-hair { left: 10%; top: 9%; width: 80%; height: 34%; }
+:where(body[data-screen="faces"]) .faces-ears { left: 19%; top: 35%; width: 62%; height: 10%; }
+:where(body[data-screen="faces"]) .ears-style-1 .faces-ears { left: 13%; top: 32%; width: 74%; height: 18%; }
+:where(body[data-screen="faces"]) .ears-style-2 .faces-ears { left: 15%; top: 34%; width: 70%; height: 13%; }
+:where(body[data-screen="faces"]) .faces-makeup { left: 30%; top: 42%; width: 40%; height: 5%; object-fit: fill; z-index: 6; }
+:where(body[data-screen="faces"]) .faces-earrings { left: 18%; top: 43%; width: 64%; height: 9%; object-fit: fill; z-index: 9; }
+:where(body[data-screen="faces"]) .faces-accessory { left: 32%; top: 1%; width: 36%; height: 17%; object-fit: contain; z-index: 10; }
+:where(body[data-screen="faces"]) .accessory-style-2 .faces-accessory { left: 29%; top: 32%; width: 42%; height: 12%; }
+:where(body[data-screen="faces"]) .accessory-style-3 .faces-accessory { left: 41%; top: 60%; width: 18%; height: 9%; }
+:where(body[data-screen="faces"]) .faces-none { display: grid; place-items: center; height: 86px; font-size: 40px; color: #aaa395; }
+:where(body[data-screen="faces"]) .faces-categories { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+:where(body[data-screen="faces"]) .faces-categories button { min-height: 76px; }
+:where(body[data-screen="faces"]) .faces-stage { justify-content: center; }
+:where(body[data-screen="faces"]) .faces-actions [data-action="download"] { flex: 1 0 100%; background: #eee6f4; border-color: #cfbfdf; color: #695583; }
+@media (max-width: 600px) {
+ :where(body[data-screen="faces"]) .faces-portrait { width: 200px; margin: 0; }
+ :where(body[data-screen="faces"]) .faces-categories { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+ :where(body[data-screen="faces"]) .faces-categories button { flex-direction: column; font-size: 9px; padding: 5px 1px; gap: 5px; min-height: 65px; }
+ :where(body[data-screen="faces"]) .faces-stage-caption { position: static; padding: 5px 10px; }
+}
+@media (max-width: 350px) {
+ :where(body[data-screen="faces"]) .faces-portrait { width: 168px; }
+}
+
+:where(body[data-screen="faces"]) .ears-style-3 .faces-ears { left: 17%; top: 34%; width: 66%; height: 13%; }

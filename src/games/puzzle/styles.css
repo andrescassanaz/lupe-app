@@ -1,0 +1,35 @@
+:where(body[data-screen="puzzle"]) .puzzle-game { max-width: 1100px; }
+:where(body[data-screen="puzzle"]) .puzzle-controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 22px 0; }
+:where(body[data-screen="puzzle"]) .puzzle-controls > div { display: flex; gap: 8px; }
+:where(body[data-screen="puzzle"]) .puzzle-controls button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; }
+:where(body[data-screen="puzzle"]) .puzzle-controls [aria-pressed="true"] { background: #397762; border-color: #397762; color: white; }
+:where(body[data-screen="puzzle"]) .puzzle-workshop { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; align-items: start; }
+:where(body[data-screen="puzzle"]) .puzzle-board-wrap { padding: 14px; }
+:where(body[data-screen="puzzle"]) .puzzle-board { position: relative; width: 100%; aspect-ratio: 1; background: #eee8da; isolation: isolate; overflow: hidden; }
+:where(body[data-screen="puzzle"]) .puzzle-model { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; z-index: 2; }
+:where(body[data-screen="puzzle"]) .puzzle-model.is-visible { opacity: .35; }
+:where(body[data-screen="puzzle"]) .puzzle-slot { position: absolute; border: 0; padding: 0; background: transparent; }
+:where(body[data-screen="puzzle"]) .puzzle-slot canvas { position: absolute; pointer-events: none; }
+:where(body[data-screen="puzzle"]) .puzzle-slot.is-placed { z-index: 3; }
+:where(body[data-screen="puzzle"]) .puzzle-progress { text-align: center; color: #57765a; margin-top: 16px; font-weight: 750; font-size: 14px; }
+:where(body[data-screen="puzzle"]) .puzzle-tray { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; padding: 20px; min-height: 200px; }
+:where(body[data-screen="puzzle"]) .puzzle-piece { aspect-ratio: 1; min-width: 44px; min-height: 44px; border: 2px solid transparent; border-radius: 14px; padding: 2px; background: #fffaf055; touch-action: none; }
+:where(body[data-screen="puzzle"]) .puzzle-piece.is-selected { border-color: #397762; background: #fffaf0; box-shadow: 0 0 0 3px #39776222; }
+:where(body[data-screen="puzzle"]) .puzzle-piece canvas { width: 100%; height: 100%; object-fit: contain; pointer-events: none; display: block; }
+:where(body[data-screen="puzzle"]) .puzzle-message { text-align: center; color: #57765a; min-height: 30px; line-height: 1.5; margin-top: 22px; }
+:where(body[data-screen="puzzle"]) .puzzle-win { grid-column: 1 / -1; text-align: center; padding: 30px 10px; color: #397762; font-size: 26px; font-weight: 800; }
+:where(body[data-screen="puzzle"]) .puzzle-win button { display: inline-flex; gap: 10px; align-items: center; min-height: 54px; margin-top: 18px; }
+:where(body[data-screen="puzzle"]) .puzzle-drag-ghost { position: fixed; width: 120px; height: 120px; object-fit: contain; transform: translate(-50%,-50%); z-index: 999; pointer-events: none; filter: drop-shadow(0 8px 6px #3335); }
+@media(max-width:700px) {
+ :where(body[data-screen="puzzle"]) .puzzle-workshop { grid-template-columns: 1fr; gap: 20px; max-width: 440px; margin: auto; }
+ :where(body[data-screen="puzzle"]) .puzzle-controls { gap: 8px; margin: 16px 0; }
+ :where(body[data-screen="puzzle"]) .puzzle-controls button { font-size: 12px; padding: 10px 12px; }
+ :where(body[data-screen="puzzle"]) .puzzle-tray { padding: 14px; gap: 10px; }
+}
+:where(body[data-screen="puzzle"]) .puzzle-workshop { position: relative; overflow: hidden; }
+:where(body[data-screen="puzzle"]) .puzzle-piece { cursor: grab; }
+:where(body[data-screen="puzzle"]) .puzzle-piece.is-loose { position: absolute; transform: translate(-50%,-50%); padding: 0; border: 0; border-radius: 0; background: transparent; aspect-ratio: auto; filter: drop-shadow(0 3px 2px #3333); }
+:where(body[data-screen="puzzle"]) .puzzle-piece.is-loose.is-selected { box-shadow: none; filter: drop-shadow(0 0 3px #397762); }
+:where(body[data-screen="puzzle"]) .puzzle-piece.is-dragging { opacity: 0; }
+:where(body[data-screen="puzzle"]) .puzzle-tray-space { aspect-ratio: 1; min-height: 44px; }
+:where(body[data-screen="puzzle"]) .puzzle-drag-ghost { cursor: grabbing; }

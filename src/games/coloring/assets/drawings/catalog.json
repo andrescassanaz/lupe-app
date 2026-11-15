@@ -1,0 +1,44 @@
+[
+  {
+    "id": "scene-v2-princesa-f1be37d8501d",
+    "name": "El jardín de la princesa",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/princesa.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-unicornio-7bc7f195be4f",
+    "name": "Unicornio y arcoíris",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/unicornio.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-dinosaurios-fac9c884515b",
+    "name": "Dinosaurios amigos",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/dinosaurios.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-familia-d76cf72197bc",
+    "name": "Un picnic en familia",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/familia.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-comiditas-6efcfd7bcf23",
+    "name": "¡A comer!",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/comiditas.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-animalitos-87a9290cbe7d",
+    "name": "Animalitos del jardín",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/animalitos.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v2-corazones-b572160a9b9a",
+    "name": "Ositos y corazones",
+    "image": "./src/games/coloring/assets/drawings/generated-v2/corazones.png",
+    "fullBleed": true
+  }
+]

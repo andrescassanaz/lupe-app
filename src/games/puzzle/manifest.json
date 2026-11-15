@@ -1,0 +1,13 @@
+{
+  "id": "puzzle",
+  "name": "Rompecabezas",
+  "subtitle": "De a poquito, un gran dibujo",
+  "order": 8,
+  "cover": "assets/images/beach.png",
+  "theme": {
+    "background": "#dfe9d5",
+    "button": "#dfe9d5",
+    "ink": "#57765a",
+    "spark": "#57765a"
+  }
+}

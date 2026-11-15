@@ -1,0 +1,13 @@
+{
+  "id": "coloring",
+  "name": "A colorear",
+  "subtitle": "Un mundo de colores y brillos",
+  "order": 3,
+  "cover": "assets/images/ai-v1/coloring.png",
+  "theme": {
+    "background": "#e8e0f0",
+    "button": "#e8e0f0",
+    "ink": "#8872aa",
+    "spark": "#a58abd"
+  }
+}
