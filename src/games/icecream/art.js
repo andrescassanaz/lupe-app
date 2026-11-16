@@ -1,5 +1,5 @@
 import { image } from '../../shared/art.js';
-import { FLAVORS } from './rules.js';
+import { FLAVORS, POPSICLES } from './rules.js';
 
 const newArt = new Set(['shop', ...FLAVORS.slice(3).map(f => `scoop-${f.id}`)]);
 export const art = (name, className = '', alt = '') =>
@@ -53,5 +53,10 @@ export function customerArt(index, mood = 'waiting') {
 }
 
 export function vesselArt(id, className = '') {
-  return image(new URL(id === 'cup' ? './assets/images/ai-v5/container-cup.png' : `./assets/images/ai-v4/container-${id}.png`, import.meta.url), `vessel-art vessel-icon-${id} ${className}`);
+  return image(new URL(id === 'super' ? './assets/images/ai-v6/container-super.png' : id === 'cup' ? './assets/images/ai-v5/container-cup.png' : `./assets/images/ai-v4/container-${id}.png`, import.meta.url), `vessel-art vessel-icon-${id} ${className}`);
+}
+
+export function popsicleArt(id, className = '') {
+  const item = POPSICLES.find(p => p.id === id);
+  return `<span class="popsicle-art ${className}" data-popsicle="${id}" role="img" aria-label="Paleta ${item.name.toLowerCase()}">${image(new URL(`./assets/images/ai-v6/popsicle-${id}.png`, import.meta.url))}</span>`;
 }

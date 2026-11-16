@@ -1,0 +1,83 @@
+body[data-screen="joey"] .app-shell { height: 100svh; height: 100dvh; min-height: 0; padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+body[data-screen="joey"] .app-header { height: 52px; }
+body[data-screen="joey"] .app-header .icon-button { width: 44px; height: 44px; }
+body[data-screen="joey"] main { min-height: 0; }
+body[data-screen="joey"] .app-footer { margin-top: 4px; min-height: 36px; flex-shrink: 0; }
+body[data-screen="joey"] .offline-status, body[data-screen="joey"] .adult-button { min-height: 36px; padding-top: 6px; padding-bottom: 6px; }
+body[data-screen="joey"] .joey-game { display: flex; flex-direction: column; flex: 1; min-height: 0; max-width: 1320px; padding: 2px 0 0; gap: 10px; }
+body[data-screen="joey"] .game-heading { flex-shrink: 0; }
+body[data-screen="joey"] .game-heading h1 { font-size: clamp(23px, 3vw, 34px); color: #687657; }
+.joey-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-shrink: 0; }
+.joey-levels { display: grid; grid-template-columns: repeat(10, 44px); padding: 4px; border-radius: 20px; background: #eeeadd; gap: 3px; }
+.joey-levels button { border: 0; background: transparent; border-radius: 16px; min-width: 44px; min-height: 44px; padding: 8px; font-size: 14px; color: #7b7d68; font-weight: 700; }
+.joey-levels button[aria-pressed="true"] { background: #fffdf5; color: #5e7556; box-shadow: 0 2px 4px #7d755b15; }
+.joey-new { display: flex; align-items: center; justify-content: center; gap: 8px; background: #fffaf0; color: #817258; min-height: 44px; }
+.joey-new .icon { width: 19px; height: 19px; }
+.joey-play { display: flex; flex: 1; min-height: 0; gap: 18px; }
+.joey-garden { flex: 1; min-width: 0; min-height: 0; position: relative; border-radius: 30px; overflow: hidden; border: 1.5px solid #e2ddc8; background: radial-gradient(ellipse at 50% 35%, #fffcf1, #f0efdb); }
+.joey-garden-label { position: absolute; top: 22px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: 2.5px; color: #92967c; pointer-events: none; }
+.joey-canvas { width: 100%; height: 100%; display: block; touch-action: manipulation; }
+.joey-canvas:focus-visible { outline: 3px solid #829c73; outline-offset: -5px; border-radius: 28px; }
+.joey-controls { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 204px; flex-shrink: 0; gap: 23px; }
+.joey-control-copy { text-align: center; }
+.joey-control-copy .eyebrow { font-size: 9px; letter-spacing: 1.8px; color: #a0987f; }
+.joey-control-copy p { font-size: 20px; color: #748062; font-weight: 700; line-height: 1.4; margin-top: 9px; }
+.joey-pad { display: grid; grid-template-columns: repeat(2, 76px); gap: 12px; }
+.joey-pad button { height: 76px; border: 1.5px solid #c6d1b6; border-radius: 23px; color: #607c55; background: #e3eacc; box-shadow: 0 5px 0 #c9d4b7; font-size: 47px; line-height: 1; font-family: system-ui, sans-serif; transition: background .12s; }
+.joey-pad button:nth-child(2), .joey-pad button:nth-child(3) { background: #f5e4c6; border-color: #e0cfac; box-shadow: 0 5px 0 #dfcfad; color: #a78248; }
+.joey-pad button:active { transform: translateY(4px); box-shadow: 0 1px 0 #c9d4b7; }
+.joey-pad button:disabled { opacity: .5; }
+.joey-pad button.is-hint { outline: 4px solid #d8a54e; outline-offset: 3px; background: #ffedb6; }
+.joey-hint { color: #8b7956; background: #fcf5e3; border-color: #e5d9bb; }
+.joey-keyboard { font-size: 10px; color: #9a9786; text-align: center; line-height: 1.6; }
+.joey-message { font-size: 12px; color: #81816c; text-align: center; min-height: 18px; flex-shrink: 0; }
+.joey-arrival { position: absolute; inset: 0; display: grid; place-items: center; background: #f8f5eaaa; padding: 12px; overflow: auto; }
+.joey-arrival[hidden] { display: none; }
+.joey-arrival > div { text-align: center; border: 1px solid #dfd8bf; border-radius: 28px; background: #fffaf0f5; padding: 24px; box-shadow: 0 12px 40px #6e61341a; }
+.joey-arrival > div > span { font-size: 42px; color: #c7866b; }
+.joey-arrival h2 { color: #6d7c58; font-size: clamp(23px, 3vw, 34px); margin: 8px 0; }
+.joey-arrival p { color: #9a876b; font-size: 15px; }
+.joey-arrival button { display: inline-flex; align-items: center; gap: 15px; margin-top: 20px; background: #758a63; border-color: #758a63; }
+@media (max-width: 900px) and (min-height: 550px) {
+  .joey-play { flex-direction: column; gap: 10px; }
+  .joey-controls { flex-direction: row; width: 100%; gap: 25px; }
+  .joey-pad { grid-template-columns: repeat(2, 60px); gap: 10px; }
+  .joey-pad button { height: 56px; border-radius: 18px; font-size: 36px; }
+  .joey-control-copy p { font-size: 15px; }
+  .joey-keyboard { display: none; }
+}
+@media (max-width: 480px) {
+  body[data-screen="joey"] .joey-game { gap: 7px; }
+  body[data-screen="joey"] .game-title-row { gap: 8px; }
+  body[data-screen="joey"] .game-heading h1 { font-size: 23px; }
+  .joey-levels { padding: 2px; gap: 0; }
+  .joey-levels button { padding: 6px; font-size: 12px; }
+  .joey-new { padding: 9px; }
+  .joey-new span { display: none; }
+  .joey-controls { gap: 15px; }
+  .joey-control-copy { display: none; }
+  .joey-garden { border-radius: 22px; }
+  .joey-garden-label { top: 15px; font-size: 8px; letter-spacing: 1.8px; }
+  .joey-message { font-size: 10px; }
+  .joey-hint { font-size: 11px; padding: 10px; }
+}
+@media (max-width: 700px) {
+  .joey-levels { grid-template-columns: repeat(5, 44px); }
+}
+@media (max-height: 549px) {
+  body[data-screen="joey"] .app-header { height: 44px; }
+  body[data-screen="joey"] .game-heading { position: absolute; top: -45px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  body[data-screen="joey"] .game-heading h1 { font-size: 24px; }
+  body[data-screen="joey"] .brand { visibility: hidden; }
+  body[data-screen="joey"] .joey-game { gap: 4px; }
+  .joey-controls { width: 170px; gap: 10px; }
+  .joey-control-copy, .joey-keyboard, .joey-garden-label { display: none; }
+  .joey-pad { grid-template-columns: repeat(2, 54px); gap: 8px; }
+  .joey-pad button { height: 46px; font-size: 32px; border-radius: 15px; }
+  .joey-hint { min-height: 44px; }
+  .joey-message { font-size: 10px; min-height: 12px; }
+  .joey-arrival > div { padding: 12px 20px; }
+  .joey-arrival > div > span, .joey-arrival p { display: none; }
+  .joey-arrival h2 { font-size: 23px; }
+  .joey-arrival button { margin-top: 8px; }
+}

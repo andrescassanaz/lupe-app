@@ -25,14 +25,8 @@ app.innerHTML = `<div class="app-shell">
   <dialog class="adult-dialog" aria-labelledby="adult-title">
     <button class="dialog-close icon-button" data-global="close-dialog" aria-label="Cerrar">${icon('close')}</button>
     <h2 id="adult-title">Jugar sin internet</h2>
-    <p>Prepará esta app en cada navegador o instalación que Lupe vaya a usar.</p>
     <div id="download-details" aria-live="polite"></div>
-    <ol><li>En el iPad, usá Compartir → Agregar a Inicio y abrí Lupe desde ese ícono.</li><li>Esperá a que aparezca «Lista para jugar sin internet».</li><li>Activá modo avión, cerrá la app y volvé a abrirla. Probá los juegos y el sonido.</li></ol>
-    <p class="storage-note" id="storage-note"></p>
-    <p class="voice-note">Las frases grabadas de los juegos están incluidas en la descarga.</p>
-    ${games.filter(game => game.adultNote).map(game => `<p class="voice-note">${escapeHtml(game.adultNote)}</p>`).join('')}
-    <div class="adult-actions"><button class="secondary-button" data-global="persistence">Proteger la descarga</button><button class="primary-button" data-global="close-dialog">Entendido</button></div>
-    <small>Si borrás los datos o el sistema libera este espacio, necesitás conectarte y preparar la app otra vez.</small>
+    <div class="adult-actions"><button class="primary-button" data-global="download-latest">Descargar última versión</button></div>
   </dialog>
 </div>`;
 
@@ -78,20 +72,22 @@ function navigate(destination) {
 offline.allowReload = () => screen === 'home';
 
 function renderOffline() {
-  const { status, ready, progress, update, error, persistent } = offline.state;
+  const { status, ready, progress, update, error, downloading } = offline.state;
+  const busy = downloading || status === 'preparing' || status === 'updating';
   const label = document.querySelector('#offline-label');
   label.textContent = ready ? 'Lista para jugar sin internet' : status === 'error' ? 'Falta preparar el modo sin internet' : `Guardando los juegos… ${progress}%`;
   label.parentElement.classList.toggle('is-ready', ready);
   label.parentElement.classList.toggle('is-error', !ready && status === 'error');
   document.querySelector('#download-details').innerHTML = `
     <div class="download-state ${ready ? 'complete' : ''}">${icon(ready ? 'check' : 'download')}<strong>${ready ? 'Lista para jugar sin internet' : status === 'error' ? 'La descarga no terminó' : `Guardando los juegos… ${progress}%`}</strong></div>
-    ${!ready && status !== 'error' ? `<progress max="100" value="${progress}" aria-label="Avance de descarga">${progress}%</progress>` : ''}
-    ${error ? `<p class="download-error" role="alert"></p>` : ''}
-    ${status === 'error' ? '<button class="secondary-button" data-global="retry">Reintentar descarga</button>' : ''}
-    ${update ? `<div class="update-notice"><p>Hay una versión nueva lista. Se puede aplicar desde el inicio.</p><button class="secondary-button" data-global="update" ${screen !== 'home' ? 'disabled' : ''}>Usar versión nueva</button></div>` : ''}`;
+    <progress max="100" value="${busy ? progress : ready ? 100 : progress}" aria-label="Avance de descarga">${busy ? progress : ready ? 100 : progress}%</progress>
+    ${error ? `<p class="download-error" role="alert"></p>` : ''}`;
   const errorNode = document.querySelector('.download-error');
   if (errorNode) errorNode.textContent = error;
-  document.querySelector('#storage-note').textContent = persistent === true ? 'El navegador concedió almacenamiento persistente.' : persistent === false ? 'El navegador no concedió almacenamiento persistente. Comprobá el modo avión antes de viajar.' : persistent === 'unsupported' ? 'Este navegador no ofrece protección adicional del almacenamiento.' : 'Podés solicitar al navegador que conserve la descarga.';
+  const downloadButton = document.querySelector('[data-global="download-latest"]');
+  downloadButton.disabled = busy || (update && screen !== 'home');
+  downloadButton.title = update && screen !== 'home' ? 'Volvé al inicio para aplicar la última versión.' : '';
+  downloadButton.setAttribute('aria-busy', String(Boolean(busy)));
 }
 
 // Handle help before a game interprets the same tap as a move.
@@ -132,9 +128,7 @@ app.addEventListener('click', event => {
     }
     case 'adults': renderOffline(); dialog.showModal(); offline.requestPersistence(); break;
     case 'close-dialog': dialog.close(); break;
-    case 'retry': offline.retry(); break;
-    case 'persistence': offline.requestPersistence(); break;
-    case 'update': offline.activateUpdate(); break;
+    case 'download-latest': offline.downloadLatest(); break;
   }
 });
 dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });

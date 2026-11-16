@@ -1,4 +1,5 @@
-import { icon, confetti } from '../../shared/art.js';
+import { icon, confetti, escapeHtml } from '../../shared/art.js';
+import { imageSaveMessage } from '../../shared/save-image.js';
 import { downloadPortrait } from './save-image.js';
 import { replaceView, gameHeading } from '../../shared/ui.js';
 import { categories, skinColors, hairColors, defaultFace, normalizeFace, randomFace, asset, STORAGE_KEY } from './parts.js';
@@ -13,6 +14,8 @@ export function mount(root, { audio }) {
   let saveFailed = false;
   let disposed = false;
   let exporting = false;
+  let imageStatus = '';
+  const lifecycle = new AbortController();
 
   function portrait() {
     const layers = ['outfit', 'ears', 'face', 'eyes', 'nose', 'mouth', 'hair', 'makeup', 'earrings', 'accessory'].filter(part => !['makeup', 'earrings', 'accessory'].includes(part) || face[part] > 0);
@@ -46,7 +49,7 @@ export function mount(root, { audio }) {
           <div class="faces-actions"><button class="secondary-button" data-action="random" data-focus="random"><span aria-hidden="true">✦</span> Sorprendeme</button><button class="secondary-button faces-undo" data-action="undo" data-focus="undo" aria-label="Deshacer último cambio" ${previous ? '' : 'disabled'}>${icon('undo')}<span>Deshacer</span></button><button class="primary-button" data-action="done" data-focus="done">${icon('check')} ¡Así me gusta!</button><button class="secondary-button" data-action="download" data-focus="download">${icon('download')} Guardar imagen</button></div>
         </div>
       </div>
-      <p class="faces-status" role="status" aria-live="polite">${saveFailed ? 'Podés seguir jugando. Este navegador no pudo guardar la carita.' : celebrate ? '¡Tu personaje está listo!' : ''}</p>
+      <p class="faces-status" role="status" aria-live="polite">${escapeHtml(imageStatus || (saveFailed ? 'Podés seguir jugando. Este navegador no pudo guardar la carita.' : celebrate ? '¡Tu personaje está listo!' : ''))}</p>
     </section>`);
 
     root.querySelector('.faces-hair').style.filter = hairColors[face.hairColor].filter;
@@ -57,6 +60,7 @@ export function mount(root, { audio }) {
     root.querySelectorAll('[data-hair-color]').forEach(button => { button.style.backgroundColor = hairColors[Number(button.dataset.hairColor)].color; });
     if (category === 'hair') root.querySelectorAll('.faces-option img').forEach(img => { img.style.filter = hairColors[face.hairColor].filter; });
     if (category === 'face') root.querySelectorAll('.faces-option img').forEach(img => { img.style.filter = skinColors[face.skin].filter; });
+    root.querySelector('[data-action="download"]').disabled = exporting;
   }
 
   function save() {
@@ -64,7 +68,7 @@ export function mount(root, { audio }) {
   }
   function change(next) {
     if (JSON.stringify(next) === JSON.stringify(face)) return;
-    previous = { ...face }; face = next; celebrate = false;
+    previous = { ...face }; face = next; celebrate = false; imageStatus = '';
     clearTimeout(timer); save(); audio.play('pop'); render();
   }
   function onClick(event) {
@@ -79,25 +83,23 @@ export function mount(root, { audio }) {
     else if (button.dataset.action === 'undo' && previous) {
       face = previous; previous = null; celebrate = false; clearTimeout(timer); save(); audio.play('pop'); render();
     } else if (button.dataset.action === 'done') {
-      celebrate = true; save(); audio.play('celebrate'); clearTimeout(timer); render();
+      celebrate = true; imageStatus = ''; save(); audio.play('celebrate'); clearTimeout(timer); render();
       timer = setTimeout(() => { celebrate = false; render(); }, 2400);
     }
   }
   async function exportImage() {
     if (exporting) return;
     exporting = true;
-    const button = root.querySelector('[data-action="download"]');
-    button.disabled = true;
-    root.querySelector('.faces-status').textContent = 'Preparando tu imagen…';
+    imageStatus = 'Preparando tu imagen…'; render();
     try {
-      await downloadPortrait(root.querySelector('.faces-portrait'), () => disposed);
-      if (!disposed) root.querySelector('.faces-status').textContent = '¡Imagen lista! Buscala en las descargas.';
-    } catch {
-      if (!disposed) root.querySelector('.faces-status').textContent = 'No pudimos guardar la imagen. Tocá Guardar imagen para reintentar.';
-    } finally { exporting = false; if (!disposed) root.querySelector('[data-action="download"]').disabled = false; }
+      const result = await downloadPortrait(root.querySelector('.faces-portrait'), { signal: lifecycle.signal });
+      if (!disposed) imageStatus = imageSaveMessage(result);
+    } catch (error) {
+      if (!disposed) imageStatus = error.name === 'NotSupportedError' ? error.message : 'No pudimos guardar la imagen. Tocá Guardar imagen para reintentar.';
+    } finally { exporting = false; if (!disposed) render(); }
   }
   root.addEventListener('click', onClick);
   render();
   audio.intro();
-  return () => { disposed = true; clearTimeout(timer); root.removeEventListener('click', onClick); };
+  return () => { disposed = true; lifecycle.abort(); clearTimeout(timer); root.removeEventListener('click', onClick); };
 }

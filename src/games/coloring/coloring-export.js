@@ -1,5 +1,6 @@
 import { COLORS } from './coloring-data.js';
 import { paintTexture } from './coloring-textures.js';
+import { saveImage } from '../../shared/save-image.js';
 
 export async function paintingBlob(drawing, painting) {
   const canvas = document.createElement('canvas');
@@ -23,14 +24,8 @@ export async function paintingBlob(drawing, painting) {
   return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('No se pudo preparar la imagen.')), 'image/png'));
 }
 
-export async function downloadPainting(drawing, painting) {
+export async function downloadPainting(drawing, painting, { signal } = {}) {
   const blob = await paintingBlob(drawing, painting);
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
   const name = drawing.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  link.download = `mi-dibujo-${name}.png`;
-  document.body.append(link); link.click(); link.remove();
-  // Allow browsers time to begin downloading before revoking the temporary URL.
-  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  return saveImage(blob, `mi-dibujo-${name}.png`, { signal });
 }

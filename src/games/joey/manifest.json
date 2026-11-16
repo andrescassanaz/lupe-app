@@ -1,0 +1,9 @@
+{
+  "id": "joey",
+  "name": "Joey vuelve a casa",
+  "subtitle": "Un laberinto de patitas y caminos",
+  "order": 13,
+  "cover": "assets/images/cover.png",
+  "theme": { "background": "#e9eddc", "button": "#e3ebda", "ink": "#647452", "spark": "#c18a62" },
+  "adultNote": "Joey vuelve a casa: acompañá a Joey por un laberinto isométrico usando las cuatro flechas o el teclado. Diez niveles progresivos del 1 al 10, con recorridos más largos, más giros y desvíos, caminos nuevos y una pista opcional. No hay tiempo, vidas ni penalizaciones. Las imágenes y la voz están incluidas para jugar sin internet."
+}

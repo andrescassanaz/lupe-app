@@ -1,0 +1,2 @@
+// Recorded clip durations in seconds. Regenerate when voices change.
+export const audioDurations = Object.freeze({"moras-intro": 21.984, "question": 2.832, "red": 1.968, "purple": 1.968, "correct": 1.896, "miss": 3.168, "won": 5.952, "lost": 4.512, "score-0": 5.304, "score-1": 4.824, "score-2": 5.016, "score-3": 4.752, "score-4": 4.536, "ended-0": 5.352, "ended-1": 4.968, "ended-2": 5.232, "ended-3": 5.328});

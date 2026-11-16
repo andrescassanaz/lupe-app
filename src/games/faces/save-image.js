@@ -1,5 +1,8 @@
+import { saveImage } from '../../shared/save-image.js';
+
 // Rasterize the exact visible layers at their natural proportions, including colors.
-export async function downloadPortrait(portrait, cancelled = () => false) {
+export async function downloadPortrait(portrait, { signal } = {}) {
+  const cancelled = () => signal?.aborted;
   const bounds = portrait.getBoundingClientRect();
   const layers = [...portrait.querySelectorAll('img')].map(img => ({
     source: img.src, rect: img.getBoundingClientRect(), style: getComputedStyle(img),
@@ -28,10 +31,7 @@ export async function downloadPortrait(portrait, cancelled = () => false) {
   const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
   if (!blob) throw new Error('No image generated');
   if (cancelled()) return;
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a'); link.href = url; link.download = 'mi-carita.png';
-  document.body.append(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  return saveImage(blob, 'mi-carita.png', { signal });
 }
 
 // Canvas filters are absent in some tablet browsers. Apply the same CSS color

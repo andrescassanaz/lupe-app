@@ -1,5 +1,6 @@
 import { textureMarkup as texture } from './coloring-textures.js';
 import { downloadPainting } from './coloring-export.js';
+import { imageSaveMessage } from '../../shared/save-image.js';
 import { COLORS, MATERIALS, paintRegion } from './coloring-data.js';
 import { icon, confetti } from '../../shared/art.js';
 import { replaceView, gameHeading } from '../../shared/ui.js';
@@ -35,6 +36,7 @@ export function mount(root, { audio }) {
   let storageAvailable = true;
   let downloading = false;
   let downloadError = '';
+  let downloadMessage = '';
   const painting = () => paintings[drawing.id] || {};
 
   function save(next) {
@@ -118,7 +120,7 @@ export function mount(root, { audio }) {
           ${completed ? '<p class="coloring-message" role="status">¡Terminaste! Podés seguir pintando.</p>' : ''}`}`);
       lastDrawing = drawing; lastPainting = current; lastError = error; lastLoading = loading;
     }
-    const toolsState = [color, material, !!drawing, count, drawing && histories[drawing.id].length, downloading, downloadError, resetPending, storageAvailable].join('|');
+    const toolsState = [color, material, !!drawing, count, drawing && histories[drawing.id].length, downloading, downloadError, downloadMessage, resetPending, storageAvailable].join('|');
     if (lastTools !== toolsState) {
       replaceView(root.querySelector('.coloring-tools'), `
           <span class="eyebrow">1 · TU MATERIAL</span>
@@ -127,7 +129,8 @@ export function mount(root, { audio }) {
           <div class="color-picker" role="group" aria-label="Elegir color">${COLORS.map(c => `<button data-color="${c.id}" data-focus="color-${c.id}" aria-label="${c.name}" aria-pressed="${c.id === color}" class="paint-color-${c.id}">${c.id === color ? icon('check') : ''}</button>`).join('')}</div>
           <div class="material-preview"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><pattern id="tool-preview" width="64" height="64" patternUnits="userSpaceOnUse">${texture(material, selectedColor.hex)}</pattern></defs><rect x="2" y="2" width="60" height="60" rx="12" fill="url(#tool-preview)"/></svg><span><strong>${selectedColor.name}</strong><small>${selectedMaterial.mark}</small></span></div>
           <button class="primary-button coloring-download" data-action="download" data-focus="color-download" ${downloading || !drawing ? 'disabled' : ''}>${icon('download')} ${downloading ? 'Preparando…' : 'Descargar dibujo'}</button>
-          ${downloadError ? `<p class="game-message" role="alert">${downloadError}</p>` : ''}
+          ${downloadError ? `<p class="game-message" role="alert">${escapeHtml(downloadError)}</p>` : ''}
+          ${downloadMessage ? `<p class="game-message" role="status">${escapeHtml(downloadMessage)}</p>` : ''}
           <div class="coloring-actions"><button class="secondary-button" data-action="undo" data-focus="color-undo" aria-label="Deshacer último cambio" ${drawing && histories[drawing.id].length ? '' : 'disabled'}>${icon('undo')} Deshacer</button><button class="secondary-button" data-action="reset" data-focus="color-reset" ${count ? '' : 'disabled'}>${icon('refresh')} Empezar de nuevo</button></div>
           ${resetPending ? '<div class="reset-confirm" role="group" aria-label="Confirmar empezar de nuevo"><p>¿Dejamos este dibujo en blanco?</p><button class="secondary-button" data-action="cancel-reset">Seguir pintando</button><button class="primary-button" data-action="confirm-reset">Sí, empezar</button></div>' : ''}
           ${storageAvailable ? '' : '<p class="game-message" role="status">El navegador no pudo guardar el dibujo. Podés seguir pintando mientras estés acá.</p>'}`);
@@ -164,9 +167,11 @@ export function mount(root, { audio }) {
     switch (button.dataset.action) {
       case 'download': {
         if (downloading) return;
-        downloading = true; downloadError = '';
-        downloadPainting(drawing, { ...painting() }).catch(() => {
-          downloadError = 'No se pudo descargar. Probá de nuevo.';
+        downloading = true; downloadError = ''; downloadMessage = '';
+        downloadPainting(drawing, { ...painting() }, { signal: lifecycle.signal }).then(result => {
+          if (!disposed) downloadMessage = imageSaveMessage(result);
+        }).catch(error => {
+          if (!disposed) downloadError = error.name === 'NotSupportedError' ? error.message : 'No se pudo guardar. Probá de nuevo.';
         }).finally(() => { downloading = false; render(); });
         render(); return;
       }

@@ -73,21 +73,21 @@ h1, h2, p { margin: 0; }
 .adult-dialog::backdrop { background: #303c3466; backdrop-filter: blur(4px); }
 .dialog-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; box-shadow: none; }
 .adult-dialog h2 { font-size: 28px; margin-top: 12px; margin-bottom: 15px; }
-.adult-dialog p, .adult-dialog li { font-size: 14px; line-height: 1.6; color: #727969; }
-.adult-dialog ol { padding-left: 22px; }
-.adult-dialog li { padding-left: 5px; margin-bottom: 12px; }
+.adult-dialog p { font-size: 14px; line-height: 1.6; color: #727969; }
 .download-state { display: flex; align-items: center; gap: 12px; padding: 18px; border-radius: 15px; background: #eee8d9; font-size: 14px; margin-top: 20px; }
 .download-state.complete { color: #49754e; background: #e4eddc; }
 .adult-dialog progress { width: 100%; height: 12px; accent-color: #6a9671; margin: 12px 0; }
 .adult-dialog .download-error { color: #a3563d; margin: 12px 0; }
-.adult-dialog .voice-note { margin-top: 12px; font-size: 12px; }
-.adult-actions { display: flex; gap: 12px; margin: 24px 0 18px; }
+.adult-actions { display: flex; margin-top: 16px; }
+.adult-actions button { width: 100%; }
 .primary-button, .secondary-button { min-height: 48px; border-radius: 14px; padding: 10px 17px; border: 1.5px solid #d9ddcb; background: #e9eddc; font-weight: 700; font-size: 13px; }
 .primary-button { background: #397762; color: #fff; border-color: #397762; }
-.secondary-button:disabled { opacity: .5; }
-.adult-dialog small { display: block; line-height: 1.5; font-size: 11px; color: #929583; }
-.update-notice { margin: 16px 0; padding: 15px; background: #eee8d9; border-radius: 15px; }
-.update-notice button { margin-top: 10px; }
+.primary-button:disabled, .secondary-button:disabled { opacity: .5; }
+.image-save-dialog { width: min(460px, calc(100% - 32px)); max-height: calc(100svh - 32px); overflow: auto; padding: 28px; border: 1px solid #ddd8c8; border-radius: 26px; color: var(--ink); background: var(--paper); }
+.image-save-dialog::backdrop { background: #303c3466; }
+.image-save-dialog h2 { font-size: 25px; margin-bottom: 14px; }
+.image-save-dialog p { line-height: 1.6; }
+.image-save-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 24px; }
 @keyframes confetti-fall { 0% { opacity: 0; translate: 0 0; rotate: 0deg; } 10% { opacity: 1; } 100% { opacity: 0; translate: 20px 500px; rotate: 340deg; } }
 @media (min-width: 1100px) and (min-height: 900px) {
   .home-screen { padding-top: 65px; }

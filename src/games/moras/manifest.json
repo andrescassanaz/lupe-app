@@ -1,0 +1,9 @@
+{
+  "id": "moras",
+  "name": "Las moritas de Lupe",
+  "subtitle": "¿Roja o morada? ¡Adiviná!",
+  "order": 13,
+  "cover": "assets/images/cover.png",
+  "theme": { "background": "#f2dedf", "button": "#f2dedf", "ink": "#96576a", "spark": "#b77987" },
+  "adultNote": "Las moritas de Lupe: Hasta 10 elecciones, un punto por acierto y victoria al alcanzar 4 puntos. La partida termina al ganar o cuando ya no alcanzan los intentos restantes. Cada mora tiene la misma probabilidad de ser roja o morada, independientemente de las anteriores. Ilustraciones y voces incluidas para jugar sin internet."
+}

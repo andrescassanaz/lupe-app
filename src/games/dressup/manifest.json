@@ -1,0 +1,9 @@
+{
+  "id": "dressup",
+  "name": "A vestir a Lupe",
+  "subtitle": "Su ropa, mil combinaciones",
+  "order": 14,
+  "cover": "assets/images/cover.png",
+  "theme": { "background": "#f2e2e7", "button": "#f0dce4", "ink": "#8b5d73", "spark": "#c79758" },
+  "adultNote": "A vestir a Lupe: combiná peinados, accesorios, prendas, medias y calzado inspirados en su ropa real. Deslizá cada fila o usá las flechas. Los vestidos están en Parte superior: ocultan la prenda inferior y bloquean su carrusel. Al volver a una remera o blusa se recupera la última parte inferior elegida. No hay tiempo, puntaje ni respuestas incorrectas. La última combinación se conserva en este navegador. Incluye imágenes y explicación por voz para jugar sin internet."
+}

@@ -34,3 +34,12 @@
 .game-tile[data-game="initials"] .tile-art { background: #f5e6cb; }
 .game-tile[data-game="initials"] .tile-go { background: #f5e6cb; color: #926b32; }
 .game-tile[data-game="initials"] .tile-spark { color: #9c78a4; }
+.game-tile[data-game="joey"] .tile-art { background: #e9eddc; }
+.game-tile[data-game="joey"] .tile-go { background: #e3ebda; color: #647452; }
+.game-tile[data-game="joey"] .tile-spark { color: #c18a62; }
+.game-tile[data-game="moras"] .tile-art { background: #f2dedf; }
+.game-tile[data-game="moras"] .tile-go { background: #f2dedf; color: #96576a; }
+.game-tile[data-game="moras"] .tile-spark { color: #b77987; }
+.game-tile[data-game="dressup"] .tile-art { background: #f2e2e7; }
+.game-tile[data-game="dressup"] .tile-go { background: #f0dce4; color: #8b5d73; }
+.game-tile[data-game="dressup"] .tile-spark { color: #c79758; }

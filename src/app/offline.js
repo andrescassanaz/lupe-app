@@ -1,7 +1,7 @@
 export class OfflineManager extends EventTarget {
   constructor() {
     super();
-    this.state = { status: 'preparing', progress: 0, ready: false, update: false, persistent: null, error: '' };
+    this.state = { status: 'preparing', progress: 0, ready: false, update: false, persistent: null, error: '', downloading: false };
     this.registration = null;
     this.allowReload = () => false;
     this.starting = null;
@@ -66,9 +66,9 @@ export class OfflineManager extends EventTarget {
       if (!worker) return;
       const result = await this.request(worker, 'VERIFY');
       this.set({ ready: result.ready, status: result.ready ? 'ready' : 'error', progress: result.ready ? 100 : 0,
-        error: result.ready ? '' : 'Faltan recursos guardados. Conectate a internet y tocá Reintentar.' });
+        error: result.ready ? '' : 'Faltan recursos guardados. Conectate a internet y descargá la última versión.' });
       if (result.ready && this.state.persistent === null) await this.requestPersistence();
-    } catch { this.set({ ready: false, status: 'error', error: 'No pudimos comprobar la descarga. Tocá Reintentar.' }); }
+    } catch { this.set({ ready: false, status: 'error', error: 'No pudimos comprobar la descarga. Intentá descargarla otra vez.' }); }
   }
   async requestPersistence() {
     try {
@@ -99,5 +99,31 @@ export class OfflineManager extends EventTarget {
       const result = await this.request(this.registration.waiting, 'ACTIVATE_UPDATE');
       if (result.blocked) this.set({ error: 'Cerrá las otras pestañas de Lupe para aplicar la actualización.' });
     } catch { this.set({ error: 'La versión nueva sigue pendiente. Podés seguir jugando.' }); }
+  }
+  async downloadLatest() {
+    if (this.state.downloading) return;
+    this.set({ downloading: true, error: '' });
+    try {
+      if (!this.state.ready) await this.retry();
+      if (this.state.error) return;
+      if (!this.registration?.waiting) await this.registration?.update();
+      const worker = this.registration?.installing;
+      if (worker) {
+        await new Promise((resolve, reject) => {
+          const changed = () => {
+            if (worker.state !== 'installed' && worker.state !== 'activated' && worker.state !== 'redundant') return;
+            worker.removeEventListener('statechange', changed);
+            if (worker.state === 'redundant') reject(new Error('Download failed'));
+            else resolve();
+          };
+          worker.addEventListener('statechange', changed);
+          changed();
+        });
+      }
+      if (this.registration?.waiting) await this.activateUpdate();
+      else await this.verify();
+    } catch {
+      this.set({ status: 'error', error: 'No se pudo descargar la última versión. Revisá la conexión e intentá de nuevo.' });
+    } finally { this.set({ downloading: false }); }
   }
 }

@@ -1,0 +1,126 @@
+:where(body[data-screen="moras"]) .moras-game { max-width: 1120px; }
+:where(body[data-screen="moras"]) .moras-board { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 4vw, 54px); align-items: center; padding: 20px 32px; background: #fffcf7; border: 1.5px solid #e9dfd3; border-radius: 32px; box-shadow: 0 7px 0 #eee7dc; }
+:where(body[data-screen="moras"]) .moras-scene { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; align-self: stretch; justify-content: center; background: radial-gradient(ellipse at 50% 60%, #f5e1db 0, #f9eee3 50%, transparent 70%); }
+:where(body[data-screen="moras"]) .moras-speech { position: relative; z-index: 1; text-align: center; width: 100%; max-width: 390px; padding: 16px 18px; background: #fffaf1; border: 1.5px solid #e4d6c3; border-radius: 24px; box-shadow: 0 4px 0 #eee3d2; }
+:where(body[data-screen="moras"]) .moras-speech::after { content: ''; position: absolute; left: 51%; bottom: -9px; width: 15px; height: 15px; transform: rotate(45deg); background: #fffaf1; border-right: 1.5px solid #e4d6c3; border-bottom: 1.5px solid #e4d6c3; }
+:where(body[data-screen="moras"]) .moras-speech > span { display: block; color: #9d7165; letter-spacing: 2px; font-size: 10px; font-weight: 800; margin-bottom: 6px; }
+:where(body[data-screen="moras"]) .moras-speech p { font-size: clamp(18px, 2.1vw, 25px); font-weight: 750; line-height: 1.25; min-height: 2.5em; display: grid; place-content: center; }
+:where(body[data-screen="moras"]) .moras-character { position: relative; width: min(100%, 420px); aspect-ratio: 1; margin: 12px auto 0; flex-shrink: 0; }
+:where(body[data-screen="moras"]) .moras-sprite { position: absolute; inset: 0; background-image: url('./assets/images/lupe-sprites.png'); background-size: 200% 200%; background-position: 0 0; background-repeat: no-repeat; }
+:where(body[data-screen="moras"]) [data-phase="drawing"] .moras-sprite { background-position: 100% 0; animation: moras-rummage .32s ease-in-out infinite alternate; transform-origin: 50% 88%; }
+:where(body[data-screen="moras"]) [data-phase="revealing"] .moras-sprite { background-position: 0 100%; }
+:where(body[data-screen="moras"]) [data-phase="eating"] .moras-sprite { background-position: 100% 100%; animation: moras-nibble .25s ease-in-out 4 alternate; }
+:where(body[data-screen="moras"]) .moras-hand-berry { position: absolute; width: 13%; left: 76%; top: 42%; opacity: 0; transform: scale(.2); pointer-events: none; }
+:where(body[data-screen="moras"]) .moras-hand-berry img { display: block; width: 100%; }
+:where(body[data-screen="moras"]) [data-phase="revealing"] .moras-hand-berry.is-visible { opacity: 1; transform: scale(1); animation: moras-reveal .4s cubic-bezier(.2, 1.6, .4, 1) both; }
+:where(body[data-screen="moras"]) [data-phase="eating"] .moras-hand-berry.is-visible { animation: moras-eat .6s ease-in both; }
+:where(body[data-screen="moras"]) .moras-scene-note { font-size: 12px; color: #9a8174; margin-top: 4px; }
+:where(body[data-screen="moras"]) .moras-play { min-width: 0; width: 100%; max-width: 470px; margin: auto; text-align: center; }
+:where(body[data-screen="moras"]) .moras-scoreboard { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+:where(body[data-screen="moras"]) .moras-round { border-radius: 20px; padding: 9px 13px; background: #f1e9dd; font-size: 13px; font-weight: 750; }
+:where(body[data-screen="moras"]) .moras-score { font-size: 32px; color: #49765f; white-space: nowrap; }
+:where(body[data-screen="moras"]) .moras-score > span { font-size: 14px; }
+:where(body[data-screen="moras"]) .moras-progress { display: block; width: 100%; height: 9px; border: 0; border-radius: 8px; background: #ede8db; margin-top: 16px; overflow: hidden; appearance: none; }
+:where(body[data-screen="moras"]) .moras-progress::-webkit-progress-bar { background: #ede8db; border-radius: 8px; }
+:where(body[data-screen="moras"]) .moras-progress::-webkit-progress-value { background: #91ad83; border-radius: 8px; }
+:where(body[data-screen="moras"]) .moras-progress::-moz-progress-bar { background: #91ad83; border-radius: 8px; }
+:where(body[data-screen="moras"]) .moras-target { font-size: 12px; color: #747c68; margin-top: 8px; }
+:where(body[data-screen="moras"]) .moras-controls h2 { font-size: 23px; margin: 26px 0 18px; letter-spacing: -.5px; }
+:where(body[data-screen="moras"]) .moras-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+:where(body[data-screen="moras"]) .moras-choice { min-width: 0; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 8px; border-radius: 25px; border: 2px solid #ebc4bd; background: #fbebe5; box-shadow: 0 5px 0 #e9c8bf; transition: transform .18s, border-color .18s; }
+:where(body[data-screen="moras"]) .moras-choice-purple { background: #eee9f1; border-color: #d9ccdf; box-shadow: 0 5px 0 #d9ccdf; }
+:where(body[data-screen="moras"]) .moras-choice img { width: clamp(65px, 7.5vw, 96px); height: auto; pointer-events: none; }
+:where(body[data-screen="moras"]) .moras-choice > span { font-size: 17px; font-weight: 800; margin-top: 9px; }
+:where(body[data-screen="moras"]) .moras-choice small { font-size: 11px; margin-top: 4px; color: #7b6d70; }
+:where(body[data-screen="moras"]) .moras-choice:enabled:active { transform: translateY(4px); box-shadow: none; }
+:where(body[data-screen="moras"]) .moras-choice.is-picked { border-color: #6e8960; box-shadow: 0 0 0 3px #bdd0ac, 0 5px 0 #a7bb96; }
+:where(body[data-screen="moras"]) .moras-choice:disabled:not(.is-picked) { opacity: .55; }
+:where(body[data-screen="moras"]) .moras-feedback { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; min-width: 0; max-width: 100%; min-height: 50px; margin: 14px 0 8px; font-size: 15px; line-height: 1.45; overflow-wrap: anywhere; color: #856e68; font-weight: 700; }
+:where(body[data-screen="moras"]) .moras-feedback.is-correct { color: #427257; }
+:where(body[data-screen="moras"]) .moras-history { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; list-style: none; padding: 0; margin: 0; }
+:where(body[data-screen="moras"]) .moras-history li { position: relative; aspect-ratio: .8; border-radius: 12px; border: 1px dashed #ddd4c7; display: flex; align-items: center; justify-content: center; color: #a5988a; font-size: 12px; }
+:where(body[data-screen="moras"]) .moras-history li.is-drawn { border-style: solid; background: #f4ece6; }
+:where(body[data-screen="moras"]) .moras-history li.is-correct { background: #e9efdf; border-color: #b7c6a6; }
+:where(body[data-screen="moras"]) .moras-history img { width: 85%; margin-top: -10px; }
+:where(body[data-screen="moras"]) .moras-history li.is-drawn span { position: absolute; bottom: 0; font-weight: 900; font-size: 13px; color: #756c66; }
+:where(body[data-screen="moras"]) .moras-history li.is-correct span { color: #49765f; }
+:where(body[data-screen="moras"]) .moras-luck { font-size: 11px; line-height: 1.5; color: #8a8277; margin-top: 14px; }
+:where(body[data-screen="moras"]) .moras-result { padding-top: 14px; }
+:where(body[data-screen="moras"]) .moras-result-star { display: block; font-size: 48px; line-height: 1.2; color: #c99a48; }
+:where(body[data-screen="moras"]) .moras-result h2 { font-size: 29px; margin: 5px 0 12px; }
+:where(body[data-screen="moras"]) .moras-result p { font-size: 15px; line-height: 1.6; color: #777a6b; }
+:where(body[data-screen="moras"]) .moras-result button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; font-size: 16px; min-height: 52px; }
+:where(body[data-screen="moras"]) [hidden] { display: none !important; }
+:where(body[data-screen="moras"]) .moras-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@keyframes moras-rummage { from { transform: rotate(-1deg) translateY(0); } to { transform: rotate(1deg) translateY(3px); } }
+@keyframes moras-nibble { from { transform: translateY(0); } to { transform: translateY(2px); } }
+@keyframes moras-reveal { from { opacity: 0; transform: translate(-18px, 24px) scale(.2); } to { opacity: 1; transform: translate(0, 0) scale(1); } }
+@keyframes moras-eat { 0% { opacity: 1; transform: scale(1); } 70% { opacity: 1; left: 52%; top: 35%; transform: scale(.6); } 100% { opacity: 0; left: 52%; top: 35%; transform: scale(0); } }
+@media (min-width: 720px) and (min-height: 600px) {
+  :where(body[data-screen="moras"]) .moras-board { flex: 1; min-height: 0; width: 100%; max-width: 1200px; margin: 0 auto; padding: 14px 28px; }
+  :where(body[data-screen="moras"]) .moras-character { width: min(100%, 48dvh); }
+  :where(body[data-screen="moras"]) .moras-speech { padding: 12px 16px; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 160px; }
+}
+@media (min-width: 720px) and (min-height: 600px) and (orientation: portrait) {
+  :where(body[data-screen="moras"]) .moras-board { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 14px 32px; }
+  :where(body[data-screen="moras"]) .moras-scene { min-height: 0; }
+  :where(body[data-screen="moras"]) .moras-character { width: min(100%, 32dvh); margin-top: 8px; }
+  :where(body[data-screen="moras"]) .moras-speech { max-width: 440px; padding: 8px 14px; }
+  :where(body[data-screen="moras"]) .moras-speech p { min-height: 1.25em; font-size: 21px; }
+  :where(body[data-screen="moras"]) .moras-scene-note { display: none; }
+  :where(body[data-screen="moras"]) .moras-controls h2 { margin: 12px 0; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 115px; padding: 8px; }
+  :where(body[data-screen="moras"]) .moras-choice img { width: 58px; }
+  :where(body[data-screen="moras"]) .moras-choice > span { margin-top: 3px; }
+  :where(body[data-screen="moras"]) .moras-feedback { min-height: 34px; margin: 8px 0; }
+  :where(body[data-screen="moras"]) .moras-luck { margin-top: 8px; }
+}
+@media (max-width: 719px) {
+  :where(body[data-screen="moras"]) .moras-board { grid-template-columns: 1fr; gap: 18px; padding: 16px; border-radius: 26px; }
+  :where(body[data-screen="moras"]) .moras-character { width: min(100%, 270px); }
+  :where(body[data-screen="moras"]) .moras-speech { max-width: 340px; padding: 10px 14px; }
+  :where(body[data-screen="moras"]) .moras-speech p { font-size: 20px; min-height: 2.5em; }
+  :where(body[data-screen="moras"]) .moras-scene-note { display: none; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 146px; }
+  :where(body[data-screen="moras"]) .moras-choice > span { font-size: 15px; }
+  :where(body[data-screen="moras"]) .moras-controls h2 { margin: 18px 0 12px; }
+  :where(body[data-screen="moras"]) .moras-history { gap: 3px; }
+  :where(body[data-screen="moras"]) .moras-history li { border-radius: 8px; min-height: 35px; }
+}
+@media (min-width: 720px) and (min-height: 600px) and (max-height: 740px) {
+  :where(body[data-screen="moras"]) .moras-board { padding: 12px 20px; gap: 20px; }
+  :where(body[data-screen="moras"]) .moras-character { width: min(100%, 42dvh); }
+  :where(body[data-screen="moras"]) .moras-speech p { font-size: 18px; }
+  :where(body[data-screen="moras"]) .moras-controls h2 { font-size: 20px; margin: 16px 0 12px; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 125px; padding: 10px 8px; }
+  :where(body[data-screen="moras"]) .moras-choice img { width: 56px; }
+  :where(body[data-screen="moras"]) .moras-choice > span { font-size: 15px; margin-top: 4px; }
+  :where(body[data-screen="moras"]) .moras-feedback { min-height: 38px; margin: 10px 0 6px; font-size: 13px; }
+  :where(body[data-screen="moras"]) .moras-luck { margin-top: 10px; }
+  :where(body[data-screen="moras"]) .moras-result-star { font-size: 32px; }
+  :where(body[data-screen="moras"]) .moras-result h2 { font-size: 23px; }
+}
+@media (max-width: 450px) {
+  :where(body[data-screen="moras"]) .moras-board { padding: 14px; gap: 12px; }
+  :where(body[data-screen="moras"]) .moras-scene { flex-direction: row; }
+  :where(body[data-screen="moras"]) .moras-character { order: 0; width: 54%; margin: 0; }
+  :where(body[data-screen="moras"]) .moras-speech { order: 1; width: 46%; padding: 12px 8px; border-radius: 18px; }
+  :where(body[data-screen="moras"]) .moras-speech > span { font-size: 8px; letter-spacing: 1px; }
+  :where(body[data-screen="moras"]) .moras-speech p { font-size: 17px; min-height: 5em; }
+  :where(body[data-screen="moras"]) .moras-speech::after { left: -8px; bottom: 28%; transform: rotate(135deg); }
+  :where(body[data-screen="moras"]) .moras-controls h2 { font-size: 21px; margin: 12px 0 10px; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 125px; padding: 8px; }
+  :where(body[data-screen="moras"]) .moras-choice img { width: 60px; }
+  :where(body[data-screen="moras"]) .moras-choice > span { margin-top: 3px; }
+  :where(body[data-screen="moras"]) .moras-feedback { min-height: 38px; margin: 10px 0 6px; font-size: 13px; }
+  :where(body[data-screen="moras"]) .moras-luck { margin-top: 10px; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  :where(body[data-screen="moras"]) .moras-board { grid-template-columns: .9fr 1.1fr; padding: 12px 20px; gap: 24px; }
+  :where(body[data-screen="moras"]) .moras-character { width: 230px; }
+  :where(body[data-screen="moras"]) .moras-speech p { font-size: 18px; }
+  :where(body[data-screen="moras"]) .moras-choice { min-height: 125px; }
+  :where(body[data-screen="moras"]) .moras-choice img { width: 60px; }
+  :where(body[data-screen="moras"]) .moras-controls h2 { margin: 12px 0; }
+}
