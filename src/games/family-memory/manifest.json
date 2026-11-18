@@ -1,0 +1,13 @@
+{
+  "id": "family-memory",
+  "name": "Memotest de familia",
+  "subtitle": "Encontrá las caras que querés",
+  "order": 2.1,
+  "cover": "assets/images/cover.png",
+  "theme": {
+    "background": "#f1dfd7",
+    "button": "#f4e2d9",
+    "ink": "#946450",
+    "spark": "#b7846b"
+  }
+}

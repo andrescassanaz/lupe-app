@@ -40,5 +40,125 @@
     "name": "Ositos y corazones",
     "image": "./src/games/coloring/assets/drawings/generated-v2/corazones.png",
     "fullBleed": true
+  },
+  {
+    "id": "scene-v3-gatitos-merienda-962667718065",
+    "name": "Gatitos de merienda",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/gatitos-merienda.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-perritos-parque-db35235e0167",
+    "name": "Perritos en el parque",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/perritos-parque.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-conejitos-huerta-d79d85c7de8a",
+    "name": "Conejitos en la huerta",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/conejitos-huerta.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-zorritos-bosque-ae17cf0b09b6",
+    "name": "Zorritos del bosque",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/zorritos-bosque.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-safari-amigos-357a1de540a5",
+    "name": "Amigos del safari",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/safari-amigos.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-mar-amigos-54be9bbd3fe1",
+    "name": "Amigos bajo el mar",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/mar-amigos.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-granja-feliz-0e8e11f5d47e",
+    "name": "La granja feliz",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/granja-feliz.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-pandas-bambu-7cf2186ee2d7",
+    "name": "Pandas y bambú",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/pandas-bambu.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-pasteleria-magica-b67d58bf2dcc",
+    "name": "La pastelería mágica",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/pasteleria-magica.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-helados-fiesta-6e225ac5c31a",
+    "name": "La fiesta de los helados",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/helados-fiesta.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-frutas-picnic-abf626f4877d",
+    "name": "Picnic de frutas",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/frutas-picnic.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-pizza-cocina-c6e2c431ea80",
+    "name": "¡A preparar pizza!",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/pizza-cocina.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-desayuno-feliz-c153699d3ee2",
+    "name": "Un desayuno feliz",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/desayuno-feliz.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-casita-dulces-e46d5cbbc053",
+    "name": "La casita de los dulces",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/casita-dulces.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-castillo-nubes-d8948f25c6d5",
+    "name": "El castillo de las nubes",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/castillo-nubes.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-castillo-jardin-8905d7e8e0d0",
+    "name": "El castillo del jardín",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/castillo-jardin.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-sirena-palacio-944d666eb776",
+    "name": "La sirena y el palacio",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/sirena-palacio.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-hada-flores-b23eb9826b21",
+    "name": "El hada de las flores",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/hada-flores.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-dragon-castillo-5d791a1d9e6b",
+    "name": "El dragón y el castillo",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/dragon-castillo.png",
+    "fullBleed": true
+  },
+  {
+    "id": "scene-v3-baile-real-5bee0199d9a3",
+    "name": "Un baile en el palacio",
+    "image": "./src/games/coloring/assets/drawings/generated-v3/baile-real.png",
+    "fullBleed": true
   }
 ]

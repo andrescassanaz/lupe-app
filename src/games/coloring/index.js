@@ -7,6 +7,7 @@ import { replaceView, gameHeading } from '../../shared/ui.js';
 import { loadCatalog, prepareDrawing } from './coloring-images.js';
 
 const STORAGE_KEY = 'lupe-coloring-scenes-v2';
+const galleryIcon = `<svg viewBox="0 0 64 56" aria-hidden="true"><rect x="5" y="3" width="50" height="44" rx="8" fill="#d4c3e8" stroke="#78618f" stroke-width="2.5" transform="rotate(-7 30 25)"/><rect x="12" y="10" width="48" height="42" rx="7" fill="#fffdf7" stroke="#78618f" stroke-width="2.5"/><rect x="18" y="16" width="15" height="13" rx="3" fill="#c4dfda"/><path d="m19 27 5-6 7 6" fill="#7da998"/><circle cx="29" cy="19" r="2" fill="#f1c86f"/><rect x="38" y="16" width="15" height="13" rx="3" fill="#ecd3dd"/><path d="m40 26 5-7 6 7Z" fill="#b18ca9"/><rect x="18" y="34" width="15" height="12" rx="3" fill="#f5dcab"/><circle cx="25" cy="40" r="4" fill="#d8a56f"/><rect x="38" y="34" width="15" height="12" rx="3" fill="#cedbea"/><path d="m40 44 5-7 6 7Z" fill="#8da9c1"/></svg>`;
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function loadSaved() {
   try {
@@ -50,7 +51,15 @@ export function mount(root, { audio }) {
   }
   function heading() {
     return `<div class="game-heading">${gameHeading('A colorear', 'game-title')}<p class="level-note">Elegí un material, un color y tocá el dibujo.</p></div>
-      <div class="drawing-picker" role="group" aria-label="Elegir dibujo">${drawings.map(d => `<button data-drawing="${escapeHtml(d.id)}" data-focus="drawing-${escapeHtml(d.id)}" aria-pressed="${d.id === selectedEntry?.id}"><img src="${escapeHtml(d.image)}" alt="" draggable="false"/><span>${escapeHtml(d.name)}</span></button>`).join('')}</div>`;
+      <button class="drawing-gallery-open" data-action="open-gallery" data-focus="open-gallery" aria-label="Elegir dibujo" aria-haspopup="dialog" aria-controls="drawing-gallery" ${drawings.length ? '' : 'disabled'}>${galleryIcon}<span>Dibujos</span><span aria-hidden="true">›</span></button>`;
+  }
+  function gallery() {
+    return `<header class="drawing-gallery-heading"><div class="drawing-gallery-title">${galleryIcon}<div><h2 id="drawing-gallery-title">Elegí tu dibujo</h2><p>Tocá el que quieras pintar</p></div></div><button class="drawing-gallery-close" data-action="close-gallery" aria-label="Cerrar galería">${icon('close')}</button></header>
+      <div class="drawing-picker" role="group" aria-label="Dibujos para colorear">${drawings.map(d => `<button data-drawing="${escapeHtml(d.id)}" data-focus="drawing-${escapeHtml(d.id)}" aria-pressed="${d.id === selectedEntry?.id}"><img src="${escapeHtml(d.image)}" alt="" draggable="false" loading="lazy" width="1536" height="1024"/><span>${escapeHtml(d.name)}</span>${d.id === selectedEntry?.id ? `<span class="drawing-selected" aria-hidden="true">${icon('check')}</span>` : ''}</button>`).join('')}</div>`;
+  }
+  function closeGallery() {
+    root.querySelector('.drawing-gallery').close();
+    root.querySelector('[data-action="open-gallery"]').focus({ preventScroll: true });
   }
   async function selectDrawing(entry) {
     if (selectedEntry?.id === entry.id && (drawing || loading)) return;
@@ -62,6 +71,8 @@ export function mount(root, { audio }) {
       const result = prepared.get(entry.id) || await prepareDrawing(entry, preparation.signal);
       if (disposed || token !== request) return;
       prepared.set(entry.id, result); drawing = result;
+      // Keep tablet memory bounded as children explore the larger collection.
+      if (prepared.size > 4) prepared.delete(prepared.keys().next().value);
       if (!paintings[drawing.id]) {
         let restored = {};
         for (const region of drawing.regions) {
@@ -92,17 +103,17 @@ export function mount(root, { audio }) {
   const emptyPainting = {};
   function render() {
     if (disposed) return;
-    const pickerScroll = root.querySelector('.drawing-picker')?.scrollLeft || 0;
     const current = drawing ? painting() : emptyPainting;
     const count = Object.keys(current).length;
     const completed = drawing && count === drawing.regions.length;
     const selectedColor = COLORS.find(c => c.id === color);
     const selectedMaterial = MATERIALS.find(m => m.id === material);
     if (!root.querySelector('.coloring-game')) {
-      root.innerHTML = `<section class="game coloring-game" aria-labelledby="game-title"><div class="coloring-heading"></div><div class="coloring-layout"><div class="coloring-paper"></div><aside class="coloring-tools" aria-label="Materiales y colores"></aside></div><div class="coloring-celebration"></div></section>`;
+      root.innerHTML = `<section class="game coloring-game" aria-labelledby="game-title"><div class="coloring-heading"></div><div class="coloring-layout"><div class="coloring-paper"></div><aside class="coloring-tools" aria-label="Materiales y colores"></aside></div><div class="coloring-celebration"></div><dialog id="drawing-gallery" class="drawing-gallery" aria-labelledby="drawing-gallery-title"></dialog></section>`;
     }
     if (lastCatalog !== drawings || lastEntry !== selectedEntry) {
       replaceView(root.querySelector('.coloring-heading'), heading());
+      replaceView(root.querySelector('.drawing-gallery'), gallery());
       lastCatalog = drawings; lastEntry = selectedEntry;
     }
     const paper = root.querySelector('.coloring-paper');
@@ -140,7 +151,6 @@ export function mount(root, { audio }) {
       replaceView(root.querySelector('.coloring-celebration'), celebrating ? confetti() : '');
       lastCelebrating = celebrating;
     }
-    root.querySelector('.drawing-picker').scrollLeft = pickerScroll;
   }
   function handleClick(event) {
     const region = event.target.closest('[data-region]');
@@ -157,9 +167,18 @@ export function mount(root, { audio }) {
     celebrating = false;
     if (button.dataset.drawing) {
       const entry = drawings.find(d => d.id === button.dataset.drawing);
-      if (entry) selectDrawing(entry);
+      if (entry) { closeGallery(); selectDrawing(entry); }
       return;
     }
+    if (button.dataset.action === 'open-gallery') {
+      const dialog = root.querySelector('.drawing-gallery');
+      dialog.showModal();
+      const selected = dialog.querySelector('[aria-pressed="true"]') || dialog.querySelector('[data-drawing]');
+      selected?.focus({ preventScroll: true });
+      selected?.scrollIntoView({ block: 'nearest' });
+      return;
+    }
+    if (button.dataset.action === 'close-gallery') { closeGallery(); return; }
     if (button.dataset.action === 'retry-drawing') { selectedEntry ? selectDrawing(selectedEntry) : start(); return; }
     if (!drawing && !button.dataset.color && !button.dataset.material) return;
     if (button.dataset.color) color = button.dataset.color;
@@ -187,8 +206,9 @@ export function mount(root, { audio }) {
     if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-region]')) { event.preventDefault(); handleClick(event); }
   }
   start();
+  root.querySelector('.drawing-gallery').addEventListener('cancel', event => { event.preventDefault(); closeGallery(); }, { signal: lifecycle.signal });
   root.addEventListener('click', handleClick);
   root.addEventListener('keydown', handleKey);
   audio.intro();
-  return () => { disposed = true; lifecycle.abort(); preparation?.abort(); root.removeEventListener('click', handleClick); root.removeEventListener('keydown', handleKey); };
+  return () => { disposed = true; root.querySelector('.drawing-gallery')?.close(); lifecycle.abort(); preparation?.abort(); root.removeEventListener('click', handleClick); root.removeEventListener('keydown', handleKey); };
 }

@@ -4,6 +4,9 @@
 .game-tile[data-game="memory"] .tile-art { background: #dce9d9; }
 .game-tile[data-game="memory"] .tile-go { background: #e0eada; color: #5a7b59; }
 .game-tile[data-game="memory"] .tile-spark { color: #69947b; }
+.game-tile[data-game="family-memory"] .tile-art { background: #f1dfd7; }
+.game-tile[data-game="family-memory"] .tile-go { background: #f4e2d9; color: #946450; }
+.game-tile[data-game="family-memory"] .tile-spark { color: #b7846b; }
 .game-tile[data-game="coloring"] .tile-art { background: #e8e0f0; }
 .game-tile[data-game="coloring"] .tile-go { background: #e8e0f0; color: #8872aa; }
 .game-tile[data-game="coloring"] .tile-spark { color: #a58abd; }

@@ -1,0 +1,90 @@
+body[data-screen="family-memory"] #app .app-shell { height: 100svh; height: 100dvh; min-height: 0; max-width: none; padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+body[data-screen="family-memory"] #app main { min-height: 0; }
+body[data-screen="family-memory"] #app .app-header { height: 44px; }
+body[data-screen="family-memory"] #app .app-header .icon-button { width: 44px; height: 44px; }
+body[data-screen="family-memory"] #app .brand { display: none; }
+body[data-screen="family-memory"] #app .app-footer { flex-shrink: 0; margin-top: 4px; min-height: 36px; }
+body[data-screen="family-memory"] #app .offline-status, body[data-screen="family-memory"] #app .adult-button { min-height: 36px; padding: 7px 10px; }
+body[data-screen="family-memory"] #app .family-memory-game { display: flex; flex-direction: column; flex: 1; min-height: 0; max-width: none; margin: 0; padding: 0; }
+body[data-screen="family-memory"] #app .game-heading { position: absolute; top: -44px; left: 52px; right: 52px; height: 44px; display: flex; align-items: center; justify-content: center; margin: 0; }
+body[data-screen="family-memory"] #app .game-title-row { max-width: 100%; gap: 8px; }
+body[data-screen="family-memory"] #app .game-heading h1 { min-width: 0; font-size: 24px; margin: 0; letter-spacing: -.7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body[data-screen="family-memory"] #app .game-instructions { flex-shrink: 0; width: 44px; height: 44px; }
+/* Setup occupies its own screen; only scores and actions remain above the board. */
+:where(body[data-screen="family-memory"]) .family-setup { width: min(100%, 640px); margin: auto; padding: 16px; display: grid; gap: 18px; overflow: auto; }
+:where(body[data-screen="family-memory"]) .family-setup fieldset { min-width: 0; border: 0; margin: 0; padding: 0; }
+:where(body[data-screen="family-memory"]) .family-setup legend { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+:where(body[data-screen="family-memory"]) .family-setup legend span { font-size: 13px; font-weight: 500; }
+:where(body[data-screen="family-memory"]) .family-choices { display: flex; gap: 8px; }
+:where(body[data-screen="family-memory"]) .family-choices button { min-width: 44px; min-height: 44px; flex: 1; padding: 10px; }
+:where(body[data-screen="family-memory"]) .family-choices [aria-pressed="true"] { background: #efd6c5; border-color: #b98166; color: #79533e; box-shadow: inset 0 0 0 1px #b98166; }
+:where(body[data-screen="family-memory"]) .family-levels strong, :where(body[data-screen="family-memory"]) .family-levels small { display: block; }
+:where(body[data-screen="family-memory"]) .family-levels small { margin-top: 3px; font-size: 12px; font-weight: 500; }
+:where(body[data-screen="family-memory"]) .family-name-inputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+:where(body[data-screen="family-memory"]) .family-name-inputs label { min-width: 0; font-size: 13px; font-weight: 700; }
+:where(body[data-screen="family-memory"]) .family-name-inputs input { display: block; width: 100%; min-width: 0; min-height: 44px; margin-top: 4px; padding: 8px 10px; border: 2px solid #d6b7a3; border-radius: 12px; background: #fffaf3; color: #79533e; font: inherit; font-size: 16px; }
+:where(body[data-screen="family-memory"]) .family-setup-hint { margin: 0; font-size: 14px; text-align: center; }
+:where(body[data-screen="family-memory"]) .family-start { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; }
+:where(body[data-screen="family-memory"]) .family-toolbar { display: grid; grid-template-columns: auto minmax(0, 640px) auto; justify-content: center; align-items: center; gap: 10px; flex-shrink: 0; padding: 3px 0 5px; }
+:where(body[data-screen="family-memory"]) .family-options { min-height: 44px; padding: 8px 10px; font-size: 13px; }
+:where(body[data-screen="family-memory"]) .family-standing { min-width: 0; }
+:where(body[data-screen="family-memory"]) .family-round-status { font-size: 13px; font-weight: 800; text-align: center; margin-bottom: 3px; line-height: 1.25; overflow-wrap: anywhere; }
+:where(body[data-screen="family-memory"]) .family-scores { display: flex; gap: 4px; }
+:where(body[data-screen="family-memory"]) .family-scores:has(> :only-child) { max-width: 200px; margin-inline: auto; }
+:where(body[data-screen="family-memory"]) .family-score { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 3px 6px; border: 2px solid transparent; border-radius: 9px; background: #fffaf380; font-size: 12px; }
+:where(body[data-screen="family-memory"]) .family-score span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:where(body[data-screen="family-memory"]) .family-score strong { flex-shrink: 0; font-size: 15px; }
+:where(body[data-screen="family-memory"]) .family-score.current { border-color: #a87853; background: #fff5db; }
+:where(body[data-screen="family-memory"]) .family-score.winner { border-color: #739b75; background: #edf6df; }
+:where(body[data-screen="family-memory"]) .family-progress { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; white-space: nowrap; flex-shrink: 0; color: #986d56; font-size: 14px; font-weight: 700; }
+:where(body[data-screen="family-memory"]) .family-progress .icon { width: 16px; height: 16px; }
+:where(body[data-screen="family-memory"]) .family-board { display: grid; flex: 1; min-height: 0; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; width: 100%; margin: 0; justify-content: center; align-content: center; overflow: auto; padding: 3px 3px 5px; }
+:where(body[data-screen="family-memory"]) .family-card { position: relative; min-width: 0; min-height: 0; border: 2px solid #fffdf5; border-radius: 11px; padding: 0; background: #ba8b74; box-shadow: 0 3px 0 #9f725e; perspective: 800px; transition: transform 160ms; }
+:where(body[data-screen="family-memory"]) .family-card:active:not(:disabled) { transform: scale(.97); }
+:where(body[data-screen="family-memory"]) .family-card:focus-visible { outline: 3px solid #477ba8; outline-offset: -3px; }
+:where(body[data-screen="family-memory"]) .family-card-inner { position: absolute; inset: 0; display: block; border-radius: 8px; transform-style: preserve-3d; transition: transform 360ms cubic-bezier(.2,.65,.3,1); }
+:where(body[data-screen="family-memory"]) .family-card-back { background: #ba8b74; backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 3px; border: 1.5px dashed #fce8d487; border-radius: 7px; display: grid; place-items: center; color: #f8e8d5; }
+:where(body[data-screen="family-memory"]) .family-card-back .icon { width: 24px; height: 24px; }
+:where(body[data-screen="family-memory"]) .family-card-back > span { position: absolute; right: 12%; top: 8%; font-size: 14px; }
+:where(body[data-screen="family-memory"]) .family-card-front { display: block; position: absolute; inset: 0; border-radius: 8px; background: #f8ebd9; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); overflow: hidden; }
+:where(body[data-screen="family-memory"]) .family-card-front img { display: block; width: 100%; height: 100%; object-fit: contain; }
+:where(body[data-screen="family-memory"]) .family-card.face-up { background: #f8ebd9; border-color: #fffdf6; box-shadow: 0 3px 0 #dfccaa; }
+:where(body[data-screen="family-memory"]) .face-up .family-card-inner { transform: rotateY(180deg); }
+:where(body[data-screen="family-memory"]) .family-card.matched { border-color: #a0bb8f; box-shadow: 0 3px 0 #91ab82; }
+:where(body[data-screen="family-memory"]) .family-check { position: absolute; top: 3px; right: 3px; border-radius: 50%; padding: 2px; background: #739b75; color: white; line-height: 0; }
+:where(body[data-screen="family-memory"]) .family-check .icon { width: 14px; height: 14px; }
+:where(body[data-screen="family-memory"]) .family-replay { display: flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; min-height: 44px; padding: 6px 12px; font-size: 14px; }
+@media (max-width: 719px) {
+  :where(body[data-screen="family-memory"]) .family-levels { gap: 5px; }
+  :where(body[data-screen="family-memory"]) .family-levels button { padding: 6px 9px; font-size: 12px; }
+  :where(body[data-screen="family-memory"]) .family-check { top: 1px; right: 1px; }
+  :where(body[data-screen="family-memory"]) .family-check .icon { width: 11px; height: 11px; }
+}
+@media (max-width: 450px) {
+  body[data-screen="family-memory"] #app .game-heading h1 { font-size: 20px; }
+  :where(body[data-screen="family-memory"]) .family-toolbar { grid-template-columns: auto minmax(0, 1fr) auto; gap: 5px; }
+  :where(body[data-screen="family-memory"]) .family-options { padding: 6px; font-size: 11px; }
+  :where(body[data-screen="family-memory"]) .family-score { flex-direction: column; gap: 0; padding: 2px; font-size: 10px; }
+  :where(body[data-screen="family-memory"]) .family-score span { max-width: 100%; }
+  :where(body[data-screen="family-memory"]) .family-replay { width: 44px; padding: 6px; }
+  :where(body[data-screen="family-memory"]) .family-replay span { display: none; }
+  :where(body[data-screen="family-memory"]) .family-round-status { font-size: 11px; }
+  :where(body[data-screen="family-memory"]) .family-progress { font-size: 12px; gap: 4px; }
+}
+@media (max-width: 350px) {
+  body[data-screen="family-memory"] #app .game-heading h1 { font-size: 14px; }
+  :where(body[data-screen="family-memory"]) .family-levels button { padding: 6px 7px; font-size: 11px; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :where(body[data-screen="family-memory"]) .family-toolbar { padding: 2px 0; }
+  :where(body[data-screen="family-memory"]) .family-setup { grid-template-columns: 1fr 1fr; gap: 8px 16px; padding: 6px 12px; }
+  :where(body[data-screen="family-memory"]) .family-setup legend { font-size: 15px; margin-bottom: 4px; }
+  :where(body[data-screen="family-memory"]) .family-names { grid-column: 1 / -1; }
+  :where(body[data-screen="family-memory"]) .family-name-inputs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  :where(body[data-screen="family-memory"]) .family-setup-hint { align-self: center; font-size: 12px; }
+  :where(body[data-screen="family-memory"]) .family-board { gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(body[data-screen="family-memory"]) .family-card { transition: none; }
+  :where(body[data-screen="family-memory"]) .family-card-inner { transition: none; }
+}

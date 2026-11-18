@@ -1,8 +1,4 @@
 :where(body[data-screen="coloring"]) .coloring-game { max-width: 1400px; }
-:where(body[data-screen="coloring"]) .drawing-picker { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 12px; margin: 14px 0; scrollbar-width: thin; }
-:where(body[data-screen="coloring"]) .drawing-picker button { flex: 0 0 158px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 5px 5px 9px; border: 2px solid #e4ddce; border-radius: 15px; background: #fffcf5; font-size: 11px; font-weight: 700; }
-:where(body[data-screen="coloring"]) .drawing-picker img { width: 100%; height: 78px; object-fit: cover; border-radius: 9px; pointer-events: none; background: white; }
-:where(body[data-screen="coloring"]) .drawing-picker button[aria-pressed="true"] { border-color: #8d79a9; background: #eee7f5; }
 :where(body[data-screen="coloring"]) .coloring-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 20px; align-items: start; }
 :where(body[data-screen="coloring"]) .coloring-paper { min-width: 0; background: #fffdf8; border: 1.5px solid #e4ded3; border-radius: 20px; box-shadow: 0 5px 0 #eae3d7; overflow: hidden; }
 :where(body[data-screen="coloring"]) .paper-caption { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; color: #827a6c; font-size: 11px; }
@@ -44,8 +40,6 @@
 @media (max-width: 700px) {
   :where(body[data-screen="coloring"]) .coloring-layout { display: flex; flex-direction: column; gap: 16px; }
   :where(body[data-screen="coloring"]) .coloring-paper, :where(body[data-screen="coloring"]) .coloring-tools { width: 100%; }
-  :where(body[data-screen="coloring"]) .drawing-picker button { flex-basis: 118px; font-size: 10px; }
-  :where(body[data-screen="coloring"]) .drawing-picker img { height: 60px; }
   :where(body[data-screen="coloring"]) .material-picker img { height: 58px; }
   :where(body[data-screen="coloring"]) .color-picker { grid-template-columns: repeat(6, minmax(44px, 1fr)); gap: 8px 4px; }
   :where(body[data-screen="coloring"]) .coloring-actions { grid-template-columns: 1fr 1fr; }
@@ -80,9 +74,6 @@
 
 @media (min-width: 720px) and (min-height: 600px) {
   :where(body[data-screen="coloring"]) .coloring-heading { flex-shrink: 0; }
-  :where(body[data-screen="coloring"]) .drawing-picker { margin: 0 0 8px; padding-bottom: 6px; }
-  :where(body[data-screen="coloring"]) .drawing-picker button { flex-basis: 140px; padding: 4px; font-size: 10px; }
-  :where(body[data-screen="coloring"]) .drawing-picker img { height: 48px; }
   :where(body[data-screen="coloring"]) .coloring-layout { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(324px, 26vw, 380px); gap: 12px; align-items: stretch; }
   :where(body[data-screen="coloring"]) .coloring-paper { display: flex; flex-direction: column; align-items: center; min-height: 0; container-type: size; }
   :where(body[data-screen="coloring"]) .paper-caption { flex-shrink: 0; width: 100%; padding: 8px 12px; }
@@ -118,4 +109,45 @@
   :where(body[data-screen="coloring"]) .coloring-actions { grid-area: 5 / 1 / 6 / 3; }
   :where(body[data-screen="coloring"]) .reset-confirm,
   :where(body[data-screen="coloring"]) .coloring-tools > .game-message { grid-column: 1 / -1; }
+}
+
+:where(body[data-screen="coloring"]) .coloring-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+:where(body[data-screen="coloring"]) .coloring-heading .game-heading { text-align: left; margin-bottom: 0; }
+:where(body[data-screen="coloring"]) .drawing-gallery-open { display: flex; align-items: center; justify-content: center; gap: 10px; flex-shrink: 0; min-height: 68px; padding: 7px 16px; border: 2px solid #b6a3cb; border-radius: 19px; background: #f1eaf8; color: #59476c; box-shadow: 0 4px 0 #dacde7; font-size: 17px; font-weight: 800; }
+:where(body[data-screen="coloring"]) .drawing-gallery-open > svg { width: 58px; height: 52px; pointer-events: none; }
+:where(body[data-screen="coloring"]) .drawing-gallery-open > :last-child { font-size: 32px; line-height: 1; }
+:where(body[data-screen="coloring"]) .drawing-gallery { position: fixed; inset: 0; width: 100%; height: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #faf6ed; color: #505b4b; overflow: hidden; overscroll-behavior: contain; }
+:where(body[data-screen="coloring"]) .drawing-gallery[open] { display: flex; flex-direction: column; }
+:where(body[data-screen="coloring"]) .drawing-gallery::backdrop { background: #faf6ed; }
+body:has(.drawing-gallery[open]) { overflow: hidden; }
+:where(body[data-screen="coloring"]) .drawing-gallery-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-shrink: 0; padding: max(16px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) 16px max(24px, env(safe-area-inset-left)); border-bottom: 1px solid #e4ddce; background: #fffcf6; }
+:where(body[data-screen="coloring"]) .drawing-gallery-title { display: flex; align-items: center; gap: 14px; }
+:where(body[data-screen="coloring"]) .drawing-gallery-title > svg { width: 58px; height: 52px; flex-shrink: 0; }
+:where(body[data-screen="coloring"]) .drawing-gallery h2 { margin: 0; font-size: clamp(22px, 3vw, 32px); }
+:where(body[data-screen="coloring"]) .drawing-gallery-heading p { margin: 4px 0 0; color: #7a7c6e; font-size: 14px; }
+:where(body[data-screen="coloring"]) .drawing-gallery-close { display: grid; place-items: center; flex-shrink: 0; width: 56px; height: 56px; border: 2px solid #d8cdb9; border-radius: 50%; background: #f3ebdf; }
+:where(body[data-screen="coloring"]) .drawing-gallery-close .icon { width: 26px; height: 26px; }
+:where(body[data-screen="coloring"]) .drawing-picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); align-content: start; gap: 22px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: 24px max(24px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
+:where(body[data-screen="coloring"]) .drawing-picker button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 9px; min-width: 0; padding: 9px 9px 13px; border: 3px solid #e2d9c9; border-radius: 20px; background: #fffdf8; color: #636858; font-size: 14px; font-weight: 750; box-shadow: 0 4px 0 #e9e1d4; }
+:where(body[data-screen="coloring"]) .drawing-picker img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; border-radius: 11px; pointer-events: none; background: white; }
+:where(body[data-screen="coloring"]) .drawing-picker button[aria-pressed="true"] { border-color: #9275ac; background: #f0e8f6; box-shadow: 0 4px 0 #d5c4e2; }
+:where(body[data-screen="coloring"]) .drawing-selected { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #8b6ba3; color: white; border: 2px solid white; }
+:where(body[data-screen="coloring"]) .drawing-selected .icon { width: 22px; height: 22px; }
+:where(body[data-screen="coloring"]) .drawing-picker button:focus-visible,
+:where(body[data-screen="coloring"]) .drawing-gallery-open:focus-visible,
+:where(body[data-screen="coloring"]) .drawing-gallery-close:focus-visible { outline: 3px solid #3977a7; outline-offset: 3px; }
+@media (max-width: 700px) {
+  :where(body[data-screen="coloring"]) .coloring-heading { gap: 8px; }
+  :where(body[data-screen="coloring"]) .coloring-heading .level-note { font-size: 11px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-open { min-height: 68px; padding: 5px 8px; flex-direction: column; gap: 0; font-size: 11px; border-radius: 16px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-open > svg { width: 50px; height: 44px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-open > :last-child { display: none; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-heading { padding: max(12px, env(safe-area-inset-top)) 14px 12px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-title { gap: 8px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-title > svg { width: 40px; height: 40px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-heading p { font-size: 12px; }
+  :where(body[data-screen="coloring"]) .drawing-gallery-close { width: 48px; height: 48px; }
+  :where(body[data-screen="coloring"]) .drawing-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px 12px max(24px, env(safe-area-inset-bottom)); }
+  :where(body[data-screen="coloring"]) .drawing-picker button { padding: 5px 5px 9px; font-size: 11px; border-radius: 14px; gap: 6px; }
+  :where(body[data-screen="coloring"]) .drawing-selected { width: 26px; height: 26px; top: 8px; right: 8px; }
 }
